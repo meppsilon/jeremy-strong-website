@@ -1,0 +1,24 @@
+body {
+  @apply .antialiased .font-sans;
+  color: var(--color-text-primary);
+  text-rendering: optimizeLegibility;
+  line-height: 1.15;
+}
+
+a {
+  @apply .cursor-pointer .no-underline;
+}
+
+ul {
+  @apply .list-reset;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  @apply .p-0 .text-left;
+}

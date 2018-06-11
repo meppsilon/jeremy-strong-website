@@ -1,0 +1,43 @@
+
+/**
+ * Preflight is to set the tailwind default state. It also performs something similar
+ * to normalize.css
+ */
+
+@import './tailwind/preflight.css';
+
+
+
+
+
+/**
+ * Initial State sets are custom initial state
+ */
+@import './custom/initial-state.css';
+
+
+
+
+
+/**
+ * Our custom css
+*/
+@import './custom/one-offs.css';
+@import './custom/custom-components.css';
+
+
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on our
+ * config file. We want utilities to be able to override so we put them at the
+ * end.
+ */
+@import './tailwind/utilities.css';
+
+
+
+
+/**
+ * This injects our custom utilities classes.
+ */
+@import './custom/custom-utilities.css';

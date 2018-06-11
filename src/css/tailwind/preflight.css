@@ -1,0 +1,8 @@
+/*
+Postcss forces you to put the @import at the top of the file but the
+'@tailwind preflight' directive needs to go before the imports so we must import
+'@tailwind preflight' from a separate file instead of putting it at the top of index.js.
+I'm sure tailwind will fix this soon.
+*/
+
+@tailwind preflight;

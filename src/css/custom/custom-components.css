@@ -1,0 +1,69 @@
+/*
+|-----------------------------------------------------------------------------
+| Buttons
+|-----------------------------------------------------------------------------
+*/
+
+.btn-normal {
+  @apply .border .border-grey-light .bg-white .cursor-pointer .py-1 .px-2;
+}
+
+.btn-pill {
+  @apply .rounded-full .border .cursor-pointer .border-grey .bg-white .py-1 .px-2 .leading-none;
+}
+
+.btn-pill-color {
+  @apply .rounded-full .cursor-pointer .py-1 .px-2 text-white .leading-none;
+}
+
+.btn-normal:hover,
+.btn-pill:hover {
+  @apply .border-grey-dark;
+}
+
+
+/*
+|-----------------------------------------------------------------------------
+| Containers
+|-----------------------------------------------------------------------------
+*/
+
+.cont {
+  @apply .bg-white .border;
+  border-color: #eaeaea;
+}
+
+
+/*
+|-----------------------------------------------------------------------------
+| Title
+|-----------------------------------------------------------------------------
+*/
+.title {
+  @apply .text-3xl .font-light .leading-tight;
+  color: #363636;
+}
+
+/*
+|-----------------------------------------------------------------------------
+| Table
+|-----------------------------------------------------------------------------
+*/
+.Table {
+
+}
+
+.TableHead {
+  @apply .border-b .flex .font-bold .text-left .pb-1;
+  color: gray;
+  border-color: #d8d8d8;
+}
+
+.TableRow {
+  @apply .border-b .flex .py-3 .text-sm .font-normal .text-left .cursor-pointer;
+  border-color: #d8d8d8;
+}
+
+.TableRow:hover > .TableData {
+  color: #ed8064;
+}

@@ -2,44 +2,88 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 
+const sections = [
+  {
+    id: 'music',
+    title: 'Music',
+    backgroundColor: 'black',
+    color: 'white',
+  },
+  {
+    id: 'choreography',
+    title: 'Choreography',
+    style: {
+      backgroundColor: 'blue',
+      color: 'white',
+    },
+  },
+  {
+    id: 'fitness',
+    title: 'Fitness',
+    style: {
+      backgroundColor: 'green',
+      color: 'white',
+    },
+  },
+  {
+    id: 'travel',
+    title: 'Travel',
+    style: {
+      backgroundColor: 'red',
+      color: 'white',
+    },
+  },
+];
+
 export default class IndexPage extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
 
+    const siteTitle = "Jeremy Strong";
+
     return (
-      <section className="section">
-        <div className="container">
-          <div className="content">
-            <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
-          </div>
-          {posts
-            .map(({ node: post }) => (
-              <div
-                className="content"
-                style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-                key={post.id}
+      <div
+        className="h-screen flex relative"
+        style={{
+          backgroundPosition: 'center',
+          backgroundImage:
+            'url(https://scontent-lax3-1.cdninstagram.com/vp/9db9e2e9ffaa61cacd46506a1cbbd454/5BB06DD3/t51.2885-15/e35/20839075_2013235065369056_4459404031642566656_n.jpg)',
+        }}
+      >
+        <div className="w-full flex">
+          <div className="flex justify-end pt-3 font-semibold text-sm w-full">
+            {sections.map(section => (
+              <Link
+                className="text-white pr-2"
+                key={section.id}
+                to={`#${section.id}`}
               >
-                <p>
-                  <Link className="has-text-primary" to={post.fields.slug}>
-                    {post.frontmatter.title}
-                  </Link>
-                  <span> &bull; </span>
-                  <small>{post.frontmatter.date}</small>
-                </p>
-                <p>
-                  {post.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button is-small" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
-                </p>
-              </div>
+                {section.title}
+              </Link>
             ))}
+          </div>
+          <div className="self-center absolute w-full flex flex-col text-white">
+            <h1 className="text-center">
+              <Link to="/" className="text-white" style={{ fontSize: '2.5rem' }}>
+                {siteTitle}
+              </Link>
+            </h1>
+            <div
+              className="text-center mt-3 font-light"
+              style={{ fontSize: '32px' }}
+            >
+              KickBack
+            </div>
+            <div className="text-center pt-2">
+              <button className="text-center text-base border-white border rounded text-white text-base py-2 px-3">
+                Listen Now
+              </button>
+            </div>
+          </div>
         </div>
-      </section>
-    )
+      </div>
+    );
   }
 }
 

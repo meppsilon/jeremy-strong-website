@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
+const postCssPlugins = require('./postcss.config.js').plugins;
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators
@@ -82,4 +83,14 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       value,
     })
   }
+}
+
+exports.modifyWebpackConfig = ({ config }) => {
+
+  config.merge(current => {
+    current.postcss = postCssPlugins;
+    return current;
+  });
+
+  return config;
 }
