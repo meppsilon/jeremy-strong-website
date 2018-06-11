@@ -42,7 +42,6 @@ const sections = [
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet title="Jeremy Strong" />
-    <Navbar siteTitle="Jeremy Strong" sections={sections} />
     <div
       style={{
         margin: '0 auto',

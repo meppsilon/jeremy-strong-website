@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
 
-const Header = ({ siteTitle, sections }) => {
+const Navbar = ({ siteTitle, sections }) => {
   return (
     <div
       className="h-screen flex relative"
@@ -46,4 +46,4 @@ const Header = ({ siteTitle, sections }) => {
   );
 };
 
-export default Header;
+export default Navbar;
