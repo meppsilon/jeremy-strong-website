@@ -6,9 +6,9 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "project"
-    label: "Project"
-    folder: "src/pages/projects"
+  - name: "posts"
+    label: "Posts"
+    folder: "src/pages/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -18,7 +18,7 @@ collections:
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Cover Image", name: "image", widget: image}
       - {label: "Social Link", name: "link", widget: "string"}
-      - {label: "Section", name: "section", widget: "relation", collection: "pages", searchFields: ["label", "name"], valueField: "label"}
+      - {label: "Section", name: "section", widget: "select", options: ["music", "choreography", "fitness", "travel"]}
   - name: "blog"
     label: "Blog"
     folder: "src/pages/blog"
