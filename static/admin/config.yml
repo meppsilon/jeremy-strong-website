@@ -12,13 +12,14 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "project-detail"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "post-detail"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Cover Image", name: "image", widget: image}
       - {label: "Social Link", name: "link", widget: "string"}
       - {label: "Section", name: "section", widget: "select", options: ["music", "choreography", "fitness", "travel"]}
+
   - name: "blog"
     label: "Blog"
     folder: "src/pages/blog"
@@ -49,6 +50,7 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "music-page"}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Description", name: "description", widget: "string"}
+          - {label: "Cover Image", name: "image", widget: "image"}
       - file: "src/pages/products/index.md"
         label: "Products Page"
         name: "products"
