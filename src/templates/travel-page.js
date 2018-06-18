@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const TravelPageTemplate = ({ title, description }) => {
-  console.log('choreography page template');
+  console.log('travel page template');
   return (
     <section className="section section--gradient">
       <div className="container">

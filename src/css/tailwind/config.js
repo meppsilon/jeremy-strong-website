@@ -15,11 +15,6 @@ we've done our very best to explain each section.
 View the full documentation at https://tailwindcss.com.
 
 
-/* For PLUG
-   '//' has been added to properties that has been modified and 'Modified' has been
-   added to the titles
-/*
-
 |-------------------------------------------------------------------------------
 | The default config
 |-------------------------------------------------------------------------------
@@ -31,116 +26,15 @@ View the full documentation at https://tailwindcss.com.
 |
 */
 
-var defaultConfig = require('tailwindcss').defaultConfig()
+var defaultConfig = require('tailwindcss/defaultConfig')();
+
+var colors = require('./colors.js');
 
 var spacing = require('./spacing.js');
 
-var screens = require('../screenSizes.js');
+var screens = require('./screenSizes.js');
 
 
-/*
-|-------------------------------------------------------------------------------
-| Colors   -- Modified                       https://tailwindcss.com/docs/colors
-|-------------------------------------------------------------------------------
-|
-| Here you can specify the colors used in your project. To get you started,
-| we've provided a generous palette of great looking colors that are perfect
-| for prototyping, but don't hesitate to change them for your project. You
-| own these colors, nothing will break if you change everything about them.
-|
-| We've used literal color names ("red", "blue", etc.) for the default
-| palette, but if you'd rather use functional names like "primary" and
-| "secondary", or even a numeric scale like "100" and "200", go for it.
-|
-*/
-
-var colors = {
-  'transparent': 'transparent',
-
-  'black': '#222b2f',
-  'grey-darkest': '#364349',
-  'grey-darker': '#565656',
-  'grey-dark': '#717171',
-  'grey': '#9babb4',
-  'grey-light': '#dae4e9',  //
-  'grey-lighter': '#f3f7f9',  //
-  'grey-lightest': '#fafcfc',  //
-  'white': '#ffffff',
-
-  'red-darkest': '#420806',
-  'red-darker': '#6a1b19',
-  'red-dark': '#cc1f1a',
-  'red': '#e3342f',
-  'red-light': '#ef5753',
-  'red-lighter': '#f9acaa',
-  'red-lightest': '#fcebea',
-
-  'orange-darkest': '#542605',
-  'orange-darker': '#7f4012',
-  'orange-dark': '#de751f',
-  'orange': '#f6993f',
-  'orange-light': '#faad63',
-  'orange-lighter': '#fcd9b6',
-  'orange-lightest': '#fff5eb',
-
-  'yellow-darkest': '#453411',
-  'yellow-darker': '#684f1d',
-  'yellow-dark': '#f2d024',
-  'yellow': '#ffed4a',
-  'yellow-light': '#fff382',
-  'yellow-lighter': '#fff9c2',
-  'yellow-lightest': '#fcfbeb',
-
-  'green-darkest': '#032d19',
-  'green-darker': '#0b4228',
-  'green-dark': '#1f9d55',
-  'green': '#38c172',
-  'green-light': '#51d88a',
-  'green-lighter': '#a2f5bf',
-  'green-lightest': '#e3fcec',
-
-  'teal-darkest': '#0d3331',
-  'teal-darker': '#174e4b',
-  'teal-dark': '#38a89d',
-  'teal': '#4dc0b5',
-  'teal-light': '#64d5ca',
-  'teal-lighter': '#a0f0ed',
-  'teal-lightest': '#e8fffe',
-
-  'blue-darkest': '#05233b',
-  'blue-darker': '#103d60',
-  'blue-dark': '#2779bd',
-  'blue': '#3490dc',
-  'blue-light': '#6cb2eb',
-  'blue-lighter': '#bcdefa',
-  'blue-lightest': '#eff8ff',
-
-  'indigo-darkest': '#191e38',
-  'indigo-darker': '#2f365f',
-  'indigo-dark': '#5661b3',
-  'indigo': '#6574cd',
-  'indigo-light': '#7886d7',
-  'indigo-lighter': '#b2b7ff',
-  'indigo-lightest': '#e6e8ff',
-
-  'purple-darkest': '#1f133f',
-  'purple-darker': '#352465',
-  'purple-dark': '#794acf',
-  'purple': '#9561e2',
-  'purple-light': '#a779e9',
-  'purple-lighter': '#d6bbfc',
-  'purple-lightest': '#f3ebff',
-
-  'pink-darkest': '#45051e',
-  'pink-darker': '#72173a',
-  'pink-dark': '#eb5286',
-  'pink': '#f66d9b',
-  'pink-light': '#fa7ea8',
-  'pink-lighter': '#ffbbca',
-  'pink-lightest': '#ffebef',
-  'link': '#00d1b2',
-  'link-red': '#ed8064',
-}
 
 module.exports = {
 
@@ -660,7 +554,7 @@ module.exports = {
   |
   */
 
-  margin: spacing,
+  margin: Object.assign(spacing, { 'auto': 'auto' }),
 
 
   /*
