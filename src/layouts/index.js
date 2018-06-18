@@ -3,44 +3,14 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
 import Navbar from '../components/Navbar';
-import './all.sass';
 import '../css/index.css';
-
-const sections = [
-  {
-    id: 'music',
-    title: 'Music',
-    backgroundColor: 'black',
-    color: 'white',
-  },
-  {
-    id: 'choreography',
-    title: 'Choreography',
-    style: {
-      backgroundColor: 'blue',
-      color: 'white',
-    },
-  },
-  {
-    id: 'fitness',
-    title: 'Fitness',
-    style: {
-      backgroundColor: 'green',
-      color: 'white',
-    },
-  },
-  {
-    id: 'travel',
-    title: 'Travel',
-    style: {
-      backgroundColor: 'red',
-      color: 'white',
-    },
-  },
-];
 
 const TemplateWrapper = ({ children }) => (
   <div>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <Helmet title="Jeremy Strong" />
     <div
       style={{

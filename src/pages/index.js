@@ -3,38 +3,38 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Sections from '../components/Sections';
 
-const sections = [
-  {
-    id: 'music',
-    title: 'Music',
-    backgroundColor: 'black',
-    color: 'white',
-  },
-  {
-    id: 'choreography',
-    title: 'Choreography',
-    style: {
-      backgroundColor: 'blue',
-      color: 'white',
-    },
-  },
-  {
-    id: 'fitness',
-    title: 'Fitness',
-    style: {
-      backgroundColor: 'green',
-      color: 'white',
-    },
-  },
-  {
-    id: 'travel',
-    title: 'Travel',
-    style: {
-      backgroundColor: 'red',
-      color: 'white',
-    },
-  },
-];
+// const sections = [
+//   {
+//     id: 'music',
+//     title: 'Music',
+//     backgroundColor: 'black',
+//     color: 'white',
+//   },
+//   {
+//     id: 'choreography',
+//     title: 'Choreography',
+//     style: {
+//       backgroundColor: 'blue',
+//       color: 'white',
+//     },
+//   },
+//   {
+//     id: 'fitness',
+//     title: 'Fitness',
+//     style: {
+//       backgroundColor: 'green',
+//       color: 'white',
+//     },
+//   },
+//   {
+//     id: 'travel',
+//     title: 'Travel',
+//     style: {
+//       backgroundColor: 'red',
+//       color: 'white',
+//     },
+//   },
+// ];
 
 export default class IndexPage extends React.Component {
   render() {
@@ -46,9 +46,6 @@ export default class IndexPage extends React.Component {
     } = this.props;
 
     const siteTitle = 'Jeremy Strong';
-
-    console.log('music posts', posts);
-    console.log('data', this.props.data);
 
     return (
       <div>
@@ -113,6 +110,7 @@ IndexPage.propTypes = {
 export const pageQuery = graphql`
   query IndexQuery {
     sections: allMarkdownRemark(
+      sort: { order: ASC, fields: [frontmatter___index] },
       filter: { frontmatter: { templateKey: { regex: "/\\w*-page/" } } }
     ) {
       edges {
