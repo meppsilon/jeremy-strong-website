@@ -62,9 +62,10 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 
 exports.modifyWebpackConfig = ({ config }) => {
 
-  config.merge(current => {
-    current.postcss = postCssPlugins;
-    return current;
+  config.merge({
+    postcss() {
+      return postCssPlugins;
+    }
   });
 
   return config;
