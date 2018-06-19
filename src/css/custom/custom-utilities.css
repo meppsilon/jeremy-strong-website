@@ -165,3 +165,14 @@ a.scroll-invisible::-webkit-scrollbar,
 .transition-carousel {
   transition: 500ms ease;
 }
+
+
+
+/*
+|-----------------------------------------------------------------------------
+| Aspect Ratio
+|-----------------------------------------------------------------------------
+*/
+.aspect-ratio-16\/9 {
+  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+}
