@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 
 import Navbar from '../components/Navbar';
 import './all.sass';
-import '../css/index.css';
+import './generated.css';
 
 const sections = [
   {
