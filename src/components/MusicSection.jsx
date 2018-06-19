@@ -1,17 +1,28 @@
 import React, { Component } from "react";
-import ReactPlayer from "react-player";
+import RealPlayer from "./Player/RealPlayer";
 import musicContent from "../content/music.js";
 
 class MusicSection extends Component {
   state = { playing: false, index: null };
 
-  changeSong = (length) => {
+  changeSong = length => {
+    console.log("changing song", 'length', length);
     if (this.state.index + 1 < length) {
-      this.setState({ playing: true, index: this.state.index + 1})
+      this.setState({ playing: true, index: this.state.index + 1 });
     } else {
-      this.setState({ playing: false })
+      this.setState({ playing: false });
     }
-  }
+  };
+
+  play = index => {
+    this.setState({ playing: true, index });
+  };
+
+  pause = index => {
+    if (this.state.playing && this.state.index === index) {
+      this.setState({ playing: false });
+    }
+  };
 
   render() {
     return (
@@ -25,29 +36,14 @@ class MusicSection extends Component {
               <div className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-3/10">
                 <div className="flex justify-center relative sm:w-full">
                   <div className="w-full h-full relative aspect-ratio-16/9">
-                    <ReactPlayer
-                      onPlay={() => this.setState({ playing: true, index: song.index })}
-                      onPause={() => this.state.playing && this.state.index === song.index ? this.setState({ playing: false }) : null}
-                      onEnded={() => this.changeSong(musicContent.length)}
-                      playing={this.state.playing && this.state.index === song.index ? true : false}
+                    <RealPlayer
+                      play={this.play}
+                      pause={this.pause}
+                      changeSong={() => this.changeSong(musicContent.length)}
+                      isPlaying={this.state.playing}
+                      stateIndex={this.state.index}
+                      songIndex={song.index}
                       url={song.link}
-                      className="pin-t pin-l absolute"
-                      width="100%"
-                      height="100%"
-                      controls
-                      config={{
-                        youtube: {
-                          playerVars: { modestbranding: 0 }
-                        },
-                        soundcloud: {
-                          options: {
-                            show_artwork: true,
-                            show_playcount: false,
-                            show_user: false,
-                            sharing: false
-                          }
-                        }
-                      }}
                     />
                   </div>
                 </div>
