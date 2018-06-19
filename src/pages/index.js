@@ -1,47 +1,51 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Link from 'gatsby-link';
 import Sections from '../components/Sections';
 
-const sections = [
-  {
-    id: 'music',
-    title: 'Music',
-    backgroundColor: 'black',
-    color: 'white',
-  },
-  {
-    id: 'choreography',
-    title: 'Choreography',
-    style: {
-      backgroundColor: 'blue',
-      color: 'white',
-    },
-  },
-  {
-    id: 'fitness',
-    title: 'Fitness',
-    style: {
-      backgroundColor: 'green',
-      color: 'white',
-    },
-  },
-  {
-    id: 'travel',
-    title: 'Travel',
-    style: {
-      backgroundColor: 'red',
-      color: 'white',
-    },
-  },
-];
+// const sections = [
+//   {
+//     id: 'music',
+//     title: 'Music',
+//     backgroundColor: 'black',
+//     color: 'white',
+//   },
+//   {
+//     id: 'choreography',
+//     title: 'Choreography',
+//     style: {
+//       backgroundColor: 'blue',
+//       color: 'white',
+//     },
+//   },
+//   {
+//     id: 'fitness',
+//     title: 'Fitness',
+//     style: {
+//       backgroundColor: 'green',
+//       color: 'white',
+//     },
+//   },
+//   {
+//     id: 'travel',
+//     title: 'Travel',
+//     style: {
+//       backgroundColor: 'red',
+//       color: 'white',
+//     },
+//   },
+// ];
 
 export default class IndexPage extends React.Component {
   render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    const {
+      data: {
+        musicPosts: { edges: posts },
+        sections: { edges: sections },
+      },
+    } = this.props;
 
-    const siteTitle = "Jeremy Strong";
+    const siteTitle = 'Jeremy Strong';
 
     return (
       <div>
@@ -55,19 +59,23 @@ export default class IndexPage extends React.Component {
         >
           <div className="w-full flex">
             <div className="flex justify-end pt-3 font-semibold text-sm w-full">
-              {sections.map(section => (
+              {sections.map(({ node: { frontmatter: { title } } }, i) => (
                 <Link
                   className="text-white pr-2"
-                  key={section.id}
-                  to={`#${section.id}`}
+                  key={`section-${title.toLowerCase()}-${i}`}
+                  to={`#${title.toLowerCase()}`}
                 >
-                  {section.title}
+                  {title}
                 </Link>
               ))}
             </div>
             <div className="self-center absolute w-full flex flex-col text-white">
               <h1 className="text-center">
-                <Link to="/" className="text-white" style={{ fontSize: '2.5rem' }}>
+                <Link
+                  to="/"
+                  className="text-white"
+                  style={{ fontSize: '2.5rem' }}
+                >
                   {siteTitle}
                 </Link>
               </h1>
@@ -97,28 +105,64 @@ IndexPage.propTypes = {
       edges: PropTypes.array,
     }),
   }),
-}
+};
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+    sections: allMarkdownRemark(
+      sort: { order: ASC, fields: [frontmatter___index] },
+      filter: { frontmatter: { templateKey: { regex: "/\\w*-page/" } } }
     ) {
       edges {
         node {
-          excerpt(pruneLength: 400)
           id
           fields {
             slug
           }
           frontmatter {
             title
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
+            description
+          }
+        }
+      }
+    }
+    musicPosts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "music"} }}
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            image
+            link
+          }
+        }
+      }
+    }
+    choreographyPosts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "choreography"} }}
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            image
+            link
           }
         }
       }
     }
   }
-`
+`;

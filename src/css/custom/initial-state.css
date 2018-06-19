@@ -1,6 +1,5 @@
 body {
   @apply .antialiased .font-sans;
-  color: var(--color-text-primary);
   text-rendering: optimizeLegibility;
   line-height: 1.15;
 }
@@ -21,4 +20,8 @@ table {
 td,
 th {
   @apply .p-0 .text-left;
+}
+
+.link, .link:active, .link:focus, .link:hover, .link:link, .link:visited {
+  transition: color 0.15s ease-in;
 }
