@@ -3,7 +3,15 @@ import ReactPlayer from "react-player";
 import musicContent from "../content/music.js";
 
 class MusicSection extends Component {
-  state = { playing: false };
+  state = { playing: false, index: null };
+
+  changeSong = (length) => {
+    if (this.state.index + 1 < length) {
+      this.setState({ playing: true, index: this.state.index + 1})
+    } else {
+      this.setState({ playing: false })
+    }
+  }
 
   render() {
     return (
@@ -18,9 +26,10 @@ class MusicSection extends Component {
                 <div className="flex justify-center relative sm:w-full">
                   <div className="w-full h-full relative aspect-ratio-16/9">
                     <ReactPlayer
-                      onPlay={() => this.setState({ playing: song.index })}
-                      onPause={() => this.state.playing === song.index ? this.setState({ playing: false }) : null}
-                      playing={this.state.playing === song.index ? true : false}
+                      onPlay={() => this.setState({ playing: true, index: song.index })}
+                      onPause={() => this.state.playing && this.state.index === song.index ? this.setState({ playing: false }) : null}
+                      onEnded={() => this.changeSong(musicContent.length)}
+                      playing={this.state.playing && this.state.index === song.index ? true : false}
                       url={song.link}
                       className="pin-t pin-l absolute"
                       width="100%"
