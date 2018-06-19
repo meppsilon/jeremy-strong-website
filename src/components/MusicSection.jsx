@@ -3,12 +3,12 @@ import ReactPlayer from "react-player";
 import musicContent from "../content/music.js";
 
 class MusicSection extends Component {
-  state = { playing: null };
+  state = { playing: false };
 
   render() {
     return (
       <div id="music" className="bg-black-true">
-        <div className="sm:w-9/10 mx-auto">
+        <div className="mx-auto sm:w-9/10">
           <div className="text-white py-2 text-center music-title text-3xl sm:text-left md:text-center">
             Music
           </div>
@@ -19,7 +19,7 @@ class MusicSection extends Component {
                   <div className="w-full h-full relative aspect-ratio-16/9">
                     <ReactPlayer
                       onPlay={() => this.setState({ playing: song.index })}
-                      onPause={() => this.state.playing === song.index ? this.setState({ playing: null}) : null}
+                      onPause={() => this.state.playing === song.index ? this.setState({ playing: false }) : null}
                       playing={this.state.playing === song.index ? true : false}
                       url={song.link}
                       className="pin-t pin-l absolute"
