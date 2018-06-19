@@ -15,9 +15,9 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "post-detail"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Cover Image", name: "image", widget: image}
-      - {label: "Social Link", name: "link", widget: "string"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Cover Image", name: "image", widget: image, required: false}
+      - {label: "Social Link", name: "link", widget: "string", required: false}
       - {label: "Section", name: "section", widget: "select", options: ["music", "choreography", "fitness", "travel"]}
 
   - name: "pages"
