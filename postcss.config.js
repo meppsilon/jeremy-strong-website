@@ -3,13 +3,15 @@ const postcssImport = require('postcss-import');
 const postcssVars = require('postcss-css-variables');
 const path = require('path');
 
+const srcPath = path.join(__dirname, 'src');
+
 
 module.exports = {
     plugins: [
       postcssImport({
-        path: path.join(__dirname, 'src'),
+        path: srcPath,
       }),
-      tailwindcss('./tailwind.config.js'),
+      tailwindcss(path.join(srcPath, 'css/tailwind/config.js')),
       postcssVars(),
       require('autoprefixer'),
     ],
