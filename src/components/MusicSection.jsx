@@ -19,6 +19,11 @@ const MusicSection = () => (
                   width="100%"
                   height="100%"
                   controls
+                  config={{
+                    youtube: {
+                      playerVars: { modestbranding: 0 }
+                    }
+                  }}
                 />
               </div>
             </div>
