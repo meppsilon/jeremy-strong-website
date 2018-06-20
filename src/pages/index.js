@@ -96,9 +96,9 @@ export default class IndexPage extends React.Component {
           </div>
         </div>
         <div>
-          {sections.map(({ node: { frontmatter: { title } }}) => {
-            const sectionPosts = get(this.props.data, `${title.toLowerCase()}Posts.edges`)
-            if (sectionPosts) return <Section title={title} posts={sectionPosts} />
+          {sections.map(({ node: { fields: { slug }, frontmatter: { title } }}) => {
+            const sectionPosts = get(this.props.data, `${title.toLowerCase()}Posts`);
+            if (sectionPosts) return <Section title={title} slug={slug} posts={sectionPosts} />
           })}
         </div>
       </div>
@@ -136,7 +136,9 @@ export const pageQuery = graphql`
     musicPosts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] },
       filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "music" } }}
+      limit: 6
     ) {
+      totalCount
       edges {
         node {
           id
@@ -154,7 +156,9 @@ export const pageQuery = graphql`
     choreographyPosts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] },
       filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "choreography" } }}
+      limit: 6
     ) {
+      totalCount
       edges {
         node {
           id
@@ -172,7 +176,9 @@ export const pageQuery = graphql`
     fitnessPosts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] },
       filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "fitness" } }}
+      limit: 6
     ) {
+      totalCount
       edges {
         node {
           id

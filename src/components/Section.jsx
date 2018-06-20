@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
+import Link from 'gatsby-link';
 
-const Section = ({ title, posts }) => (
+const Section = ({ title, slug, posts }) => (
   <div id={title.toLowerCase()} className="bg-black-true">
     <div className="mx-auto sm:w-9/10">
       <div className="text-white py-2 text-center music-title text-3xl sm:text-left md:text-center">
         {title}
       </div>
       <div className="md:flex md:flex-wrap md:justify-between">
-        {posts.map(({ node: { frontmatter: post } }) => (
+        {posts.edges.map(({ node: { frontmatter: post } }) => (
           <div className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-3/10">
             <div className="flex justify-center relative sm:w-full">
               <div className="w-full h-full relative aspect-ratio-16/9">
@@ -48,6 +49,7 @@ const Section = ({ title, posts }) => (
           </div>
         ))}
       </div>
+      {posts.totalCount > 3 && <Link to={slug} className="flex items-center justify-center py-6">See more {title}</Link>}
     </div>
   </div>
 );
