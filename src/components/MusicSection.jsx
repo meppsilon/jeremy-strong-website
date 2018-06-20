@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import RealPlayer from "./Player/RealPlayer";
+import DummyPlayer from "./Player/DummyPlayer";
 import musicContent from "../content/music.js";
 
 class MusicSection extends Component {
-  state = { playing: false, index: null };
+  state = { playing: false, index: null, load: false };
 
   changeSong = length => {
-    console.log("changing song", 'length', length);
     if (this.state.index + 1 < length) {
       this.setState({ playing: true, index: this.state.index + 1 });
     } else {
@@ -15,7 +15,7 @@ class MusicSection extends Component {
   };
 
   play = index => {
-    this.setState({ playing: true, index });
+    this.setState({ load: true, playing: true, index })
   };
 
   pause = index => {
@@ -35,7 +35,7 @@ class MusicSection extends Component {
             {musicContent.map(song => (
               <div className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-3/10">
                 <div className="flex justify-center relative sm:w-full">
-                  <div className="w-full h-full relative aspect-ratio-16/9">
+                  {this.state.load || song.index === this.state.loadedIndex || song.link.includes('soundcloud') ? (
                     <RealPlayer
                       play={this.play}
                       pause={this.pause}
@@ -45,7 +45,12 @@ class MusicSection extends Component {
                       songIndex={song.index}
                       url={song.link}
                     />
-                  </div>
+                  ) : (
+                    <DummyPlayer
+                      url={song.link}
+                      load={() => this.setState({ loadedIndex: song.index })}
+                    />
+                  )}
                 </div>
                 <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full md:w-full md:pl-0 md:pt-3">
                   <div className="text-center text-lg font-semibold sm:text-left md:text-center">
