@@ -18,7 +18,7 @@ collections:
       - {label: "Description", name: "description", widget: "text", required: false}
       - {label: "Cover Image", name: "image", widget: image, required: false}
       - {label: "Social Link", name: "link", widget: "string", required: false}
-      - {label: "Section", name: "section", widget: "select", options: ["music", "choreography", "fitness", "travel"]}
+      - {label: "Section", name: "section", widget: "select", options: ["music", "choreography", "fitness", "travel"], default: "music"}
 
   - name: "pages"
     label: "Pages"

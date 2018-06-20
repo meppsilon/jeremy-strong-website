@@ -32,7 +32,7 @@ export const postDetailQuery = graphql`
       frontmatter {
         title
         description
-        image
+        link
       }
     }
   }
