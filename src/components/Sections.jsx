@@ -1,7 +1,7 @@
 import React from 'react';
 import MusicSection from './MusicSection';
 
-const Sections = ({ id, title, style }) => (
+const Sections = ({ id, musicPosts }) => (
   <div
     id={id}
     // style={{
@@ -10,7 +10,7 @@ const Sections = ({ id, title, style }) => (
     //   ...style
     // }}
   >
-    <MusicSection />
+    <MusicSection musicPosts={musicPosts} />
   </div>
 )
 

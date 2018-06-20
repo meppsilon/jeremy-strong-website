@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
+import get from "lodash/get";
 import Navbar from "../components/Navbar";
-import Sections from "../components/Sections";
+import Section from "../components/Section";
 import BannerContent from "../components/BannerContent";
 
 export default class IndexPage extends React.Component {
   render() {
+    console.log("data", this.props);
     const {
       data: {
-        musicPosts: { edges: posts },
         sections: { edges: sections }
       }
     } = this.props;
@@ -20,7 +21,16 @@ export default class IndexPage extends React.Component {
       <div className="bg-black-true">
         <Navbar sections={sections} />
         <BannerContent sections={sections} siteTitle={siteTitle} />
-        <Sections />
+        <div>
+          {sections.map(({ node: { frontmatter: { title } } }) => {
+            const sectionPosts = get(
+              this.props.data,
+              `${title.toLowerCase()}Posts.edges`
+            );
+            if (sectionPosts)
+              return <Section title={title} posts={sectionPosts} />;
+          })}
+        </div>{" "}
       </div>
     );
   }
@@ -55,7 +65,7 @@ export const pageQuery = graphql`
     }
     musicPosts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "music"} }}
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "music" } }}
     ) {
       edges {
         node {
@@ -66,7 +76,6 @@ export const pageQuery = graphql`
           frontmatter {
             title
             description
-            image
             link
           }
         }
@@ -74,7 +83,7 @@ export const pageQuery = graphql`
     }
     choreographyPosts: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "choreography"} }}
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "choreography" } }}
     ) {
       edges {
         node {
@@ -85,7 +94,24 @@ export const pageQuery = graphql`
           frontmatter {
             title
             description
-            image
+            link
+          }
+        }
+      }
+    }
+    fitnessPosts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "fitness" } }}
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
             link
           }
         }

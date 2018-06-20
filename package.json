@@ -21,6 +21,7 @@
     "postcss-css-variables": "^0.8.1",
     "postcss-import": "^11.1.0",
     "prop-types": "^15.6.0",
+    "purgecss": "^1.0.1",
     "react": "^16.2.0",
     "react-helmet": "^5.2.0",
     "react-player": "^1.6.4",
