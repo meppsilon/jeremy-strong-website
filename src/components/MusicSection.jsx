@@ -15,7 +15,7 @@ class MusicSection extends Component {
   };
 
   play = index => {
-    this.setState({ load: true, playing: true, index })
+    this.setState({ load: true, playing: true, index });
   };
 
   pause = index => {
@@ -35,22 +35,19 @@ class MusicSection extends Component {
             {musicContent.map(song => (
               <div className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-3/10">
                 <div className="flex justify-center relative sm:w-full">
-                  {this.state.load || song.index === this.state.loadedIndex || song.link.includes('soundcloud') ? (
-                    <RealPlayer
-                      play={this.play}
-                      pause={this.pause}
-                      changeSong={() => this.changeSong(musicContent.length)}
-                      isPlaying={this.state.playing}
-                      stateIndex={this.state.index}
-                      songIndex={song.index}
-                      url={song.link}
-                    />
-                  ) : (
-                    <DummyPlayer
-                      url={song.link}
-                      load={() => this.setState({ loadedIndex: song.index })}
-                    />
-                  )}
+                  <DummyPlayer
+                    url={song.link}
+                    load={() => this.setState({ loadedIndex: song.index })}
+                  />
+                  {/* <RealPlayer
+                    play={this.play}
+                    pause={this.pause}
+                    changeSong={() => this.changeSong(musicContent.length)}
+                    isPlaying={this.state.playing}
+                    stateIndex={this.state.index}
+                    songIndex={song.index}
+                    url={song.link}
+                  /> */}
                 </div>
                 <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full md:w-full md:pl-0 md:pt-3">
                   <div className="text-center text-lg font-semibold sm:text-left md:text-center">

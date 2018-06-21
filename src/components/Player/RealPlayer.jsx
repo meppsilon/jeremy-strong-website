@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import classnames from "classnames";
 import ReactPlayer from "react-player";
 
 class RealPlayer extends Component {
@@ -10,15 +11,22 @@ class RealPlayer extends Component {
       isPlaying,
       stateIndex,
       songIndex,
-      url
+      url,
+      ready,
+      isReady
     } = this.props;
     return (
-      <div className="w-full h-full relative aspect-ratio-16/9">
+      <div
+        className={classnames(
+          "w-full h-full relative aspect-ratio-16/9",
+        )}
+      >
         <ReactPlayer
           onPlay={() => play(songIndex)}
           onPause={() => pause(songIndex)}
           onEnded={() => changeSong()}
           playing={isPlaying && stateIndex === songIndex ? true : false}
+          onReady={() => ready()}
           url={url}
           className="pin-t pin-l absolute"
           width="100%"
