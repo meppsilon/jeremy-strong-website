@@ -24,7 +24,6 @@ class Player extends Component {
     } = this.props;
     const showDummy = !this.state.ready && !this.state.hide;
     const showLoader = !this.state.ready && this.state.hide;
-    console.log('showDummy', showDummy);
     return (
       <div className="flex justify-center relative sm:w-full cursor-pointer">
         <RealPlayer

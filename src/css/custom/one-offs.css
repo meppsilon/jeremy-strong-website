@@ -3,3 +3,7 @@
     width: 30%;
   }
 }
+
+body {
+  @apply .bg-black-true;
+}
