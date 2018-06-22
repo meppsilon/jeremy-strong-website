@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "gatsby-link";
 import get from "lodash/get";
+import BackgroundMedia from "../components/BackgroundMedia";
 import Navbar from "../components/Navbar";
 import Section from "../components/Section";
 import BannerContent from "../components/BannerContent";
@@ -19,16 +20,17 @@ export default class IndexPage extends React.Component {
 
     return (
       <div className="bg-black-true">
+        <BackgroundMedia />
         <Navbar sections={sections} />
         <BannerContent sections={sections} siteTitle={siteTitle} />
         <div>
-          {sections.map(({ node: { frontmatter: { title } } }) => {
+          {sections.map(({ node: { fields: { slug }, frontmatter: { title } } }) => {
             const sectionPosts = get(
               this.props.data,
-              `${title.toLowerCase()}Posts.edges`
+              `${title.toLowerCase()}Posts`
             );
             if (sectionPosts)
-              return <Section title={title} posts={sectionPosts} />;
+              return <Section title={title} posts={sectionPosts} slug={slug}/>;
           })}
         </div>{" "}
       </div>
@@ -67,6 +69,7 @@ export const pageQuery = graphql`
       sort: { order: DESC, fields: [frontmatter___date] },
       filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "music" } }}
     ) {
+      totalCount
       edges {
         node {
           id
@@ -85,6 +88,7 @@ export const pageQuery = graphql`
       sort: { order: DESC, fields: [frontmatter___date] },
       filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "choreography" } }}
     ) {
+      totalCount
       edges {
         node {
           id
@@ -103,6 +107,7 @@ export const pageQuery = graphql`
       sort: { order: DESC, fields: [frontmatter___date] },
       filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "fitness" } }}
     ) {
+      totalCount
       edges {
         node {
           id

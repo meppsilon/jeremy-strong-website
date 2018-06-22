@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Link from "gatsby-link";
 import Player from "./Player";
 
 class Section extends Component {
@@ -23,7 +24,7 @@ class Section extends Component {
   };
 
   render() {
-    const { title, posts } = this.props;
+    const { title, posts, slug } = this.props;
     return (
       <div id={title.toLowerCase()} className="bg-black-true">
         <div className="mx-auto sm:w-9/10">
@@ -31,7 +32,7 @@ class Section extends Component {
             {title}
           </div>
           <div className="md:flex md:flex-wrap md:justify-between">
-            {posts.map(({ node: { frontmatter: post } }) => (
+            {posts.edges.map(({ node: { frontmatter: post } }) => (
               <div className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-3/10">
                 <Player
                   play={this.play}
@@ -55,6 +56,7 @@ class Section extends Component {
                 </div>
               </div>
             ))}
+            {posts.totalCount > 3 && <Link to={slug} className="flex items-center justify-center py-6">See more {title}</Link>}
           </div>
         </div>
       </div>

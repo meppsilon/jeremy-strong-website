@@ -7,3 +7,11 @@
 body {
   @apply .bg-black-true;
 }
+
+.links-social {
+  @apply .text-xl .px-2;
+}
+
+.navbar-bg {
+  background-color: #000000bd;
+}

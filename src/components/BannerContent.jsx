@@ -1,10 +1,8 @@
 import React from "react";
 import Link from "gatsby-link";
-import BackgroundMedia from "./BackgroundMedia";
 
 const BannerContent = ({ siteTitle }) => (
   <div className="w-full flex h-screen">
-    <BackgroundMedia />
     <div className="self-center absolute w-full flex flex-col text-white">
       <h1 className="text-center">
         <Link

@@ -67,13 +67,3 @@
 .TableRow:hover > .TableData {
   color: #ed8064;
 }
-
-
-
-.links-social {
-  @apply .pt-2 .pb-2 .text-xl .px-7;
-}
-
-.pages-container {
-  @apply .pt-8 .h-full;
-}
