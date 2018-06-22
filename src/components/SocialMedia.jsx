@@ -1,7 +1,7 @@
 import React from "react";
 
 const SocialMedia = () => (
-  <div className="flex z-10">
+  <div className="flex z-10 ml-auto pr-2">
     <a href="https://www.instagram.com/itskanin/" className="links-social">
       <i className="fa fa-instagram text-white" aria-hidden="true" />
     </a>

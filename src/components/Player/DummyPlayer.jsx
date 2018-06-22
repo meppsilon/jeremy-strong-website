@@ -6,7 +6,7 @@ const YouTubeGetID = url => {
 };
 
 const DummyPlayer = ({ url, hide }) => (
-  <div className="w-full h-0 absolute aspect-ratio-16/9 overflow-hidden" onClick={() => hide()}>
+  <div className="w-full h-0 relative aspect-ratio-16/9 overflow-hidden" onClick={() => hide()}>
     <img
       className="pin-t pin-l absolute"
       style={{ top: "-16.82%" }}

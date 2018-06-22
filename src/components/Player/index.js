@@ -26,7 +26,7 @@ class Player extends Component {
     const showLoader = !this.state.ready && this.state.hide;
     return (
       <div className="flex justify-center relative sm:w-full cursor-pointer">
-        <RealPlayer
+        {/* <RealPlayer
           play={play}
           pause={pause}
           ready={() => this.ready()}
@@ -36,10 +36,10 @@ class Player extends Component {
           songIndex={songIndex}
           url={url}
           isReady={this.state.ready}
-        />
-        {showDummy && (
-            <DummyPlayer url={url} hide={() => this.setState({ hide: true })} />
-          )}
+        /> */}
+
+        <DummyPlayer url={url} hide={() => this.setState({ hide: true })} />
+
         {/* {showLoader && (
             <ClipLoader color={"#141414"} loading={true} />
           )} */}

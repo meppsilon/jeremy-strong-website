@@ -3,8 +3,9 @@ import Link from "gatsby-link";
 import classnames from "classnames";
 import animate from "../utils/animate";
 import Breakpoints from "../utils/Breakpoints";
-import { md } from "../css/tailwind/screenSizes";
+import { sm } from "../css/tailwind/screenSizes";
 import SocialMedia from "./SocialMedia";
+import Menu from "./Menu";
 
 class Navbar extends Component {
   state = { open: false, scrolled: false };
@@ -12,49 +13,59 @@ class Navbar extends Component {
   checkIfScrolled = () => {
     const offset = window.pageYOffset;
     if (offset > 0 && !this.state.scrolled) {
-      this.setState({ scrolled: true })
+      this.setState({ scrolled: true });
     } else if (offset === 0 && this.state.scrolled) {
-      this.setState({ scrolled: false })
+      this.setState({ scrolled: false });
     }
-  }
+  };
 
   componentDidMount = () => {
-    window.addEventListener('scroll', this.animatedScroll)
-  }
-
-  animatedScroll = animate(this.checkIfScrolled);
-
+    window.addEventListener("scroll", this.checkIfScrolled);
+  };
 
   render() {
     const { sections } = this.props;
-    // console.log('state', this.state.scrolled);
     return (
       <Breakpoints
-        settings={{ showMenu: true }}
+        settings={{ smallest: true }}
         breakpoints={[
           {
-            breakpoint: md,
-            showMenu: false
+            breakpoint: sm,
+            smallest: false
           }
         ]}
       >
-        {({ showMenu }) => (
-          <div className={classnames("flex pt-3 w-full z-50 fixed md:absolute", this.state.scrolled && "navbar-bg")}>
-            <i className="fa fa-bars links-social text-white"></i>
-            <SocialMedia />
-            {!showMenu && (
-              <div className="font-semibold text-sm ml-auto">
-                {sections.map(({ node: { frontmatter: { title } } }, i) => (
-                  <Link
-                    className="text-white pr-2"
-                    key={`section-${title.toLowerCase()}-${i}`}
-                    to={`#${title.toLowerCase()}`}
-                  >
-                    {title}
-                  </Link>
-                ))}
-              </div>
+        {({ smallest }) => (
+          <div
+            className={classnames(
+              "py-2 w-full z-50 fixed sm:absolute",
+              (this.state.scrolled || this.state.open) && "navbar-bg"
             )}
+          >
+            <div className="flex">
+              <SocialMedia />
+              {smallest && (
+                <i
+                  className="fa fa-bars fa-lg links-social text-white"
+                  style={{ paddingTop: "4px" }}
+                  onClick={() => this.setState({ open: !this.state.open })}
+                />
+              )}
+              {!smallest && (
+                <div className="font-semibold text-sm">
+                  {sections.map(({ node: { frontmatter: { title } } }, i) => (
+                    <Link
+                      className="text-white pr-2"
+                      key={`section-${title.toLowerCase()}-${i}`}
+                      to={`#${title.toLowerCase()}`}
+                    >
+                      {title}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            {this.state.open && <Menu sections={sections} hideMenu={() => this.setState({ open: false })}/>}
           </div>
         )}
       </Breakpoints>
