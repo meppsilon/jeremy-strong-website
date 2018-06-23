@@ -8,7 +8,7 @@ const SmallMenu = ({ sections, hideMenu }) => (
         className="text-white pr-2 block text-center"
         key={`section-${title.toLowerCase()}-${i}`}
         onClick={hideMenu}
-        to={`#${title.toLowerCase()}`}
+        to={`/#${title.toLowerCase()}`}
       >
         {title}
       </Link>
