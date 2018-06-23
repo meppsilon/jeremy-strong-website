@@ -21,7 +21,7 @@ export default class IndexPage extends React.Component {
     return (
       <div className="bg-black-true">
         <BackgroundMedia />
-        <Navbar sections={sections} />
+        {/* <Navbar sections={sections} /> */}
         <BannerContent sections={sections} siteTitle={siteTitle} />
         <div>
           {sections.map(({ node: { fields: { slug }, frontmatter: { title } } }) => {
@@ -30,7 +30,7 @@ export default class IndexPage extends React.Component {
               `${title.toLowerCase()}Posts`
             );
             if (sectionPosts)
-              return <Section title={title} posts={sectionPosts} slug={slug}/>;
+              return <Section title={title} posts={sectionPosts} slug={slug} key={`section-${title}`}/>;
           })}
         </div>{" "}
       </div>

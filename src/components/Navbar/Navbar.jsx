@@ -33,11 +33,12 @@ class Navbar extends Component {
 
   render() {
     const { sections, smallest } = this.props;
+    const navbarIsColored = smallest && (this.state.scrolled || this.state.open);
     return (
       <div
         className={classnames(
           "py-2 w-full z-50 fixed sm:absolute",
-          (this.state.scrolled || this.state.open) && "navbar-bg"
+          navbarIsColored && "navbar-bg"
         )}
       >
         <div className="flex">

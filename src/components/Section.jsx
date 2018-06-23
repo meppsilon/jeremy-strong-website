@@ -33,7 +33,10 @@ class Section extends Component {
           </div>
           <div className="md:flex md:flex-wrap md:justify-between">
             {posts.edges.map(({ node: { frontmatter: post } }) => (
-              <div className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-3/10">
+              <div
+                className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-3/10"
+                key={`section-post-${post.title}`}
+              >
                 <Player
                   play={this.play}
                   pause={this.pause}
@@ -56,7 +59,11 @@ class Section extends Component {
                 </div>
               </div>
             ))}
-            {posts.totalCount > 3 && <Link to={slug} className="flex items-center justify-center py-6">See more {title}</Link>}
+            {posts.totalCount > 3 && (
+              <Link to={slug} className="flex items-center justify-center py-6">
+                See more {title}
+              </Link>
+            )}
           </div>
         </div>
       </div>
