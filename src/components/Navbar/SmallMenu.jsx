@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 
-const Menu = ({ sections, hideMenu }) => (
+const SmallMenu = ({ sections, hideMenu }) => (
   <div className="font-semibold text-sm">
     {sections.map(({ node: { frontmatter: { title } } }, i) => (
       <Link
@@ -16,4 +16,4 @@ const Menu = ({ sections, hideMenu }) => (
   </div>
 );
 
-export default Menu;
+export default SmallMenu;
