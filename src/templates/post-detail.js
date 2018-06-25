@@ -1,28 +1,42 @@
 import React from 'react';
+import ReactPlayer from 'react-player';
 
-export const PostDetailTemplate = ({ title, image, description }) => (
-  <section className="section">
-    <div className="container content">
-      <div className="columns">
-        <div className="column is-10 is-offset-1">
-          <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-            {title}
-          </h1>
-          <p>{description}</p>
-          <img alt={description} src={image} />
-        </div>
+export const PostDetailTemplate = ({ title, link, description }) => (
+  <section className="pt-8 m-8 text-white">
+    <div className="text-center">
+      <div className="w-full h-full relative aspect-ratio-16/9">
+        <ReactPlayer
+          url={link}
+          className="pin-t pin-l absolute"
+          width="100%"
+          height="100%"
+          controls
+          config={{
+            youtube: {
+              playerVars: { modestbranding: 0 },
+            },
+            soundcloud: {
+              options: {
+                show_artwork: true,
+                show_playcount: false,
+                show_user: false,
+                sharing: false,
+              },
+            },
+          }}
+        />
       </div>
+      <h1 className="font-semibold my-6">{title}</h1>
+      <h2 className="font-light">{description}</h2>
     </div>
   </section>
 );
 
-const PostDetail = ({ data: { post } }) => (
-  <PostDetailTemplate
-    title={post.frontmatter.title}
-    description={post.frontmatter.description}
-    image={post.frontmatter.image}
-  />
-);
+const PostDetail = ({
+  data: {
+    post: { frontmatter },
+  },
+}) => <PostDetailTemplate {...frontmatter} />;
 
 export default PostDetail;
 

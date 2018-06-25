@@ -10,8 +10,8 @@ export const MusicPageTemplate = ({ title, description, posts }) => {
         <h2 className="font-light">{description}</h2>
       </div>
       <div className="md:flex md:flex-wrap md:justify-between">
-        {posts.edges.map(({ node: { frontmatter: post } }) => (
-          <PostDetail {...post} />
+        {posts.edges.map(({ node: { fields: { slug }, frontmatter: post } }) => (
+          <PostDetail {...post} slug={slug} />
         ))}
       </div>
     </section>
