@@ -1,21 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PostDetail from '../components/PostDetail';
 
-export const TravelPageTemplate = ({ title, description }) => {
+export const TravelPageTemplate = ({ title, description, posts }) => {
   console.log('travel page template');
   return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <h3>{description}</h3>
-            </div>
-          </div>
-        </div>
+    <section className="pt-8 m-8 text-white">
+      <div className="text-center">
+        <h1 className="font-semibold my-6">{title}</h1>
+        <h2 className="font-light">{description}</h2>
+      </div>
+      <div className="md:flex md:flex-wrap md:justify-between">
+        {posts.edges.map(({ node: { frontmatter: post } }) => (
+          <PostDetail {...post} />
+        ))}
       </div>
     </section>
   );
@@ -27,12 +25,13 @@ TravelPageTemplate.propTypes = {
 };
 
 const TravelPage = ({ data }) => {
-  const { post } = data;
+  const { travelPage, posts } = data;
 
   return (
     <TravelPageTemplate
-      title={post.frontmatter.title}
-      description={post.frontmatter.description}
+      title={travelPage.frontmatter.title}
+      description={travelPage.frontmatter.description}
+      posts={posts}
     />
   );
 };
@@ -45,10 +44,29 @@ export default TravelPage;
 
 export const travelPageQuery = graphql`
   query TravelPage($id: String!) {
-    post: markdownRemark(id: { eq: $id }) {
+    travelPage: markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
         description
+      }
+    }
+    posts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "travel" } }}
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            link
+          }
+        }
       }
     }
   }
