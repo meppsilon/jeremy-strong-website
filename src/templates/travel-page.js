@@ -32,7 +32,7 @@ const TravelPage = ({ data }) => {
     <TravelPageTemplate
       title={travelPage.frontmatter.title}
       description={travelPage.frontmatter.description}
-      posts={get(posts, 'edges')}
+      posts={get(posts, 'edges', [])}
     />
   );
 };
