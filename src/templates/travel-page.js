@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import PostDetail from '../components/PostDetail';
 
 export const TravelPageTemplate = ({ title, description, posts }) => {
@@ -11,7 +12,7 @@ export const TravelPageTemplate = ({ title, description, posts }) => {
         <h2 className="font-light">{description}</h2>
       </div>
       <div className="md:flex md:flex-wrap md:justify-between">
-        {posts.edges.map(({ node: { frontmatter: post } }) => (
+        {posts.map(({ node: { frontmatter: post } }) => (
           <PostDetail {...post} />
         ))}
       </div>
@@ -31,7 +32,7 @@ const TravelPage = ({ data }) => {
     <TravelPageTemplate
       title={travelPage.frontmatter.title}
       description={travelPage.frontmatter.description}
-      posts={posts}
+      posts={get(posts, 'edges')}
     />
   );
 };
