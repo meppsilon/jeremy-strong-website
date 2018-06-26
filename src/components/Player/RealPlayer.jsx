@@ -11,14 +11,15 @@ const RealPlayer = ({
   songIndex,
   url,
   ready,
+  end,
   isReady
 }) => (
   <div className={classnames("w-full h-full relative aspect-ratio-16/9")}>
     <ReactPlayer
       onPlay={() => play(songIndex)}
       onPause={() => pause(songIndex)}
-      onEnded={() => changeSong()}
-      playing={isPlaying && stateIndex === songIndex ? true : false}
+      onEnded={() => end()}
+      // playing={isPlaying && stateIndex === songIndex ? true : false}
       onReady={() => ready()}
       url={url}
       className="pin-t pin-l absolute"
