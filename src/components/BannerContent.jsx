@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "gatsby-link";
 
-const BannerContent = ({ siteTitle }) => (
+const BannerContent = ({ siteTitle, bannerTitle }) => (
   <div className="w-full flex h-screen">
     <div className="self-center absolute w-full flex flex-col text-white">
       <h1 className="text-center">
@@ -17,7 +17,7 @@ const BannerContent = ({ siteTitle }) => (
         className="text-center mt-3 font-light"
         style={{ fontSize: "32px" }}
       >
-        KickBack
+        {bannerTitle}
       </div>
       <div className="text-center pt-2">
         <button className="text-center text-base border-white border rounded text-white text-base py-2 px-3">
