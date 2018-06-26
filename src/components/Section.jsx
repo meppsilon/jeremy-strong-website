@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Link from "gatsby-link";
+import Link, { navigateTo } from "gatsby-link";
 import Player from "./Player";
 
 class Section extends Component {
@@ -22,7 +22,7 @@ class Section extends Component {
       this.setState({ playing: false });
     }
   };
-
+  // node: { fields: { slug }
   render() {
     const { title, posts, slug } = this.props;
     return (
@@ -32,33 +32,47 @@ class Section extends Component {
             {title}
           </div>
           <div className="md:flex md:flex-wrap -mx-4">
-            {posts.edges.map(({ node: { frontmatter: post } }) => (
-              <div
-                className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-1/3 md:px-4"
-                key={`section-post-${post.title}`}
-              >
-                <Player
-                  play={this.play}
-                  pause={this.pause}
-                  changeSong={() => this.changeSong(posts.length)}
-                  isPlaying={this.state.playing}
-                  stateIndex={this.state.index}
-                  songIndex={post.index}
-                  url={post.link}
-                />
-                <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full md:w-full md:pl-0 md:pt-3">
-                  <div className="text-center text-lg font-semibold sm:text-left md:text-center">
-                    {post.title}
-                  </div>
-                  <div
-                    className="text-center pt-2 text-sm font-medium sm:text-left md:text-center"
-                    style={{ color: "#bdbdbd" }}
-                  >
-                    {post.description}
+            {posts.edges.map(
+              (
+                {
+                  node: {
+                    frontmatter: post,
+                    fields: { slug: slug }
+                  }
+                },
+                i
+              ) => (
+                <div
+                  className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-1/3 md:px-4"
+                  key={`section-post-${post.title}`}
+                >
+                  <Player
+                    play={this.play}
+                    pause={this.pause}
+                    changeSong={() => this.changeSong(posts.length)}
+                    isPlaying={this.state.playing}
+                    stateIndex={this.state.index}
+                    songIndex={i}
+                    url={post.link}
+                    dummyClick={() => navigateTo(slug)}
+                  />
+                  <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full md:w-full md:pl-0 md:pt-3">
+                    <Link
+                      to={slug}
+                      className="block text-center text-lg font-semibold text-white sm:text-left md:text-center"
+                    >
+                      {post.title}
+                    </Link>
+                    <div
+                      className="text-center pt-2 text-sm font-medium sm:text-left md:text-center"
+                      style={{ color: "#bdbdbd" }}
+                    >
+                      {post.description}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
           {posts.totalCount > 3 && (
             <Link to={slug} className="flex items-center justify-center py-6">
