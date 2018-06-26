@@ -10,7 +10,8 @@ const YouTubeGetID = url => {
 
 export const PostDetailTemplate = ({ title, link, description, nextPosts }) => (
   <section className="pt-8 m-8 text-white">
-    <div className="text-center">
+    <div className="text-center mb-8">
+      <h1 className="font-semibold my-6">{title}</h1>
       <div className="w-full h-full relative aspect-ratio-16/9">
         <ReactPlayer
           url={link}
@@ -33,7 +34,6 @@ export const PostDetailTemplate = ({ title, link, description, nextPosts }) => (
           }}
         />
       </div>
-      <h1 className="font-semibold my-6">{title}</h1>
       <h2 className="font-light">{description}</h2>
     </div>
     <div>
