@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
+import Link from 'gatsby-link';
 import PostDetail from '../components/PostDetail';
+
+const YouTubeGetID = url => {
+  url = url.split(/(vi\/|v%3D|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+  return undefined !== url[2] ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0];
+};
 
 export const PostDetailTemplate = ({ title, link, description, nextPosts }) => (
   <section className="pt-8 m-8 text-white">
@@ -36,11 +42,11 @@ export const PostDetailTemplate = ({ title, link, description, nextPosts }) => (
         {nextPosts.map(({ node: { fields: { slug }, frontmatter: post } }) => (
           <div className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-3/10">
             <div className="w-full h-full relative aspect-ratio-16/9">
-              <div className="w-full h-0 relative aspect-ratio-16/9 overflow-hidden" onClick={() => hide()}>
+              <div className="w-full h-0 relative aspect-ratio-16/9 overflow-hidden">
                 <img
                   className="pin-t pin-l absolute"
                   style={{ top: "-16.82%" }}
-                  src={`http://img.youtube.com/vi/${YouTubeGetID(url)}/hqdefault.jpg`}
+                  src={`http://img.youtube.com/vi/${YouTubeGetID(post.link)}/hqdefault.jpg`}
                 />
               </div>
             </div>
@@ -49,13 +55,13 @@ export const PostDetailTemplate = ({ title, link, description, nextPosts }) => (
                 to={slug}
                 className="block text-white hover:text-indigo-dark text-center text-lg font-semibold sm:text-left md:text-center"
               >
-                {title}
+                {post.title}
               </Link>
               <div
                 className="text-center pt-2 text-sm font-medium sm:text-left md:text-center"
                 style={{ color: '#bdbdbd' }}
               >
-                {description}
+                {post.description}
               </div>
             </div>
           </div>
