@@ -1,38 +1,59 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Link from "gatsby-link";
-import get from "lodash/get";
-import BackgroundMedia from "../components/BackgroundMedia";
-import Navbar from "../components/Navbar";
-import Section from "../components/Section";
-import BannerContent from "../components/BannerContent";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Link from 'gatsby-link';
+import get from 'lodash/get';
+import BackgroundMedia from '../components/BackgroundMedia';
+import Navbar from '../components/Navbar';
+import Section from '../components/Section';
+import BannerContent from '../components/BannerContent';
 
 export default class IndexPage extends React.Component {
   render() {
-    console.log("data", this.props);
+    console.log('data', this.props);
     const {
       data: {
-        sections: { edges: sections }
-      }
+        sections: { edges: sections },
+        backgroundContent: { frontmatter: bannerContent },
+      },
     } = this.props;
 
-    const siteTitle = "Jeremy Strong";
+    const siteTitle = 'Jeremy Strong';
 
     return (
       <div className="bg-black-true">
-        <BackgroundMedia />
-        {/* <Navbar sections={sections} /> */}
-        <BannerContent sections={sections} siteTitle={siteTitle} />
+        <BackgroundMedia
+          mediaType={bannerContent.type}
+          media={bannerContent.media}
+        />
+        <BannerContent
+          siteTitle={siteTitle}
+          bannerTitle={bannerContent.title}
+          bannerLink={bannerContent.link}
+        />
         <div>
-          {sections.map(({ node: { fields: { slug }, frontmatter: { title } } }) => {
-            const sectionPosts = get(
-              this.props.data,
-              `${title.toLowerCase()}Posts`
-            );
-            if (sectionPosts)
-              return <Section title={title} posts={sectionPosts} slug={slug} key={`section-${title}`}/>;
-          })}
-        </div>{" "}
+          {sections.map(
+            ({
+              node: {
+                fields: { slug },
+                frontmatter: { title },
+              },
+            }) => {
+              const sectionPosts = get(
+                this.props.data,
+                `${title.toLowerCase()}Posts`,
+              );
+              if (sectionPosts)
+                return (
+                  <Section
+                    title={title}
+                    posts={sectionPosts}
+                    slug={slug}
+                    key={`section-${title}`}
+                  />
+                );
+            },
+          )}
+        </div>{' '}
       </div>
     );
   }
@@ -41,13 +62,21 @@ export default class IndexPage extends React.Component {
 IndexPage.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array
-    })
-  })
+      edges: PropTypes.array,
+    }),
+  }),
 };
 
 export const pageQuery = graphql`
   query IndexQuery {
+    backgroundContent: markdownRemark(frontmatter: { contentKey: { eq: "background-content" } }) {
+      frontmatter {
+        type
+        media
+        title
+        link
+      }
+    }
     sections: allMarkdownRemark(
       sort: { order: ASC, fields: [frontmatter___index] },
       filter: { frontmatter: { templateKey: { regex: "/\\w*-page/" } } }

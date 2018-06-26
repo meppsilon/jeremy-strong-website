@@ -32,7 +32,7 @@ class Navbar extends Component {
   };
 
   render() {
-    const { sections, smallest } = this.props;
+    const { sections, socialLinks, smallest } = this.props;
     const navbarIsColored = smallest && (this.state.scrolled || this.state.open);
     return (
       <div
@@ -42,7 +42,7 @@ class Navbar extends Component {
         )}
       >
         <div className="flex">
-          <SocialMedia />
+          <SocialMedia socialLinks={socialLinks} />
           {smallest && (
             <MenuButton
               open={this.state.open}

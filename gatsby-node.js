@@ -33,17 +33,19 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
     posts.forEach(edge => {
       const { id, frontmatter: { section, templateKey }, fields: { slug } } = edge.node;
-      createPage({
-        path: slug,
-        component: path.resolve(
-          `src/templates/${String(templateKey)}.js`
-        ),
-        // additional data can be passed via context
-        context: {
-          id,
-          section
-        },
-      })
+      if (templateKey) {
+        createPage({
+          path: slug,
+          component: path.resolve(
+            `src/templates/${String(templateKey)}.js`
+          ),
+          // additional data can be passed via context
+          context: {
+            id,
+            section
+          },
+        });
+      }
     })
 
   })

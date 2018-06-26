@@ -6,6 +6,29 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "background"
+    label: "Background"
+    files:
+      - file: "src/content/background/index.md"
+        label: "Background Content"
+        name: "content"
+        fields:
+          - {label: "Content Key", name: "contentKey", widget: hidden, default: "background-content"}
+          - {label: "Media Type", name: type, widget: select, options: ["image", "video"]}
+          - {label: "Media File", name: media, widget: file}
+          - {label: "Link", name: link, widget: string}
+          - {label: "Background Title", name: title, widget: string}
+
+  - name: "socialLinks"
+    label: "Social Links"
+    folder: "src/content/social-links"
+    fields:
+      - {label: "Content Key", name: "contentKey", widget: "hidden", default: "social-links"}
+      - {label: "Index", name: "index", widget: "hidden"}
+      - {label: "Icon", name: "icon", widget: hidden}
+      - {label: "Title", name: "title", widget: string}
+      - {label: "Link", name: "link", widget: string}
+
   - name: "posts"
     label: "Posts"
     folder: "src/pages/posts"
