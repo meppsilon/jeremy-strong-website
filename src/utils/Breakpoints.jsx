@@ -41,7 +41,7 @@ class Breakpoints extends Component {
     currentBreakpoint: null,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const { breakpoints } = this.props;
     if (breakpoints) {
       const sortedBreakpointList = breakpoints.sort(
