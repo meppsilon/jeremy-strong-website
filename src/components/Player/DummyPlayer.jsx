@@ -9,6 +9,8 @@ const propTypes = {
   showPlay: PropTypes.bool,
   showLoad: PropTypes.bool,
   className: PropTypes.string,
+  imgClassName: PropTypes.string,
+  size: PropTypes.string,
   hide: PropTypes.func
 };
 
@@ -17,7 +19,9 @@ const defaultProps = {
   hide: () => null,
   showPlay: true,
   showLoad: false,
-  className: 'relative'
+  className: 'relative',
+  imgClassName: 'player-top', // top: "-16.82%"
+  size: 'sddefault'
 };
 
 const YouTubeGetID = url => {
@@ -25,17 +29,16 @@ const YouTubeGetID = url => {
   return undefined !== url[2] ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0];
 };
 
-const DummyPlayer = ({ url, dummyClick, showPlay, showLoad, className }) => (
+const DummyPlayer = ({ url, dummyClick, showPlay, showLoad, className, size, imgClassName }) => (
   <div
-    className={classnames('w-full h-0 aspect-ratio-16/9 overflow-hidden',
+    className={classnames('w-full h-full aspect-ratio-16/9 overflow-hidden',
     className)}
     // onClick={() => hide()}
     onClick={dummyClick}
   >
     <img
-      className="pin-t pin-l absolute"
-      style={{ top: "-16.82%" }}
-      src={`http://img.youtube.com/vi/${YouTubeGetID(url)}/hqdefault.jpg`}
+      className={classnames('pin-t pin-l absolute', imgClassName)}
+      src={`http://img.youtube.com/vi/${YouTubeGetID(url)}/${size}.jpg`}
     />
     <div className="absolute transform-xy-center">
       {showPlay && (

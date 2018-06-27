@@ -1,8 +1,9 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import Link from "gatsby-link";
+import Link, { navigateTo } from "gatsby-link";
 import classnames from "classnames";
 import Player from "../components/Player";
+import DummyPlayer from "../components/Player/DummyPlayer";
 import PostDetail from "../components/PostDetail";
 
 const YouTubeGetID = url => {
@@ -17,17 +18,16 @@ export class PostDetailTemplate extends React.Component {
     const { showNavbar } = this.state;
     return (
       <section className="pt-10 text-white">
-        <div className="text-center mb-8">
-          <Player
-            url={link}
-          />
+        <div className="mb-8">
+          <Player url={link} size={"maxresdefault"} />
+          <div className="w-9/10 mx-auto">
+            <p className="font-semibold text-2xl mt-2">{title}</p>
+            <p className="text-lg py-2">{description}</p>
+          </div>
         </div>
-        <h1 className="font-semibold my-6">{title}</h1>
-
-        <h2 className="font-light">{description}</h2>
-        <div>
+        <div className="w-9/10 mx-auto">
           <h2 className="font-light">Next Posts</h2>
-          <div className="md:flex md:flex-wrap md:justify-between">
+          <div className="flex flex-col">
             {nextPosts.map(
               ({
                 node: {
@@ -35,19 +35,15 @@ export class PostDetailTemplate extends React.Component {
                   frontmatter: post
                 }
               }) => (
-                <div className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-3/10">
-                  <div className="w-full h-full relative aspect-ratio-16/9">
-                    <div className="w-full h-0 relative aspect-ratio-16/9 overflow-hidden">
-                      <img
-                        className="pin-t pin-l absolute"
-                        style={{ top: "-16.82%" }}
-                        src={`http://img.youtube.com/vi/${YouTubeGetID(
-                          post.link
-                        )}/hqdefault.jpg`}
-                      />
-                    </div>
+                <div className="flex">
+                  <div className="w-1/2">
+                    <DummyPlayer
+                      showPlay={false}
+                      url={post.link}
+                      dummyClick={() => navigateTo(slug)}
+                    />
                   </div>
-                  <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full md:w-full md:pl-0 md:pt-3">
+                  <div className="">
                     <Link
                       to={slug}
                       className="block text-white hover:text-indigo-dark text-center text-lg font-semibold sm:text-left md:text-center"

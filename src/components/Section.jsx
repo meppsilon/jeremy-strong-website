@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Link, { navigateTo } from "gatsby-link";
 import Player from "./Player";
 import DummyPlayer from "./Player/DummyPlayer";
+import RealPlayer from "./Player/RealPlayer";
 
 class Section extends Component {
   render() {
@@ -27,10 +28,12 @@ class Section extends Component {
                   className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-1/3 md:px-4"
                   key={`section-post-${post.title}`}
                 >
-                  <DummyPlayer
-                    url={post.link}
-                    dummyClick={() => navigateTo(slug)}
-                  />
+                  <div className="w-full">
+                    <DummyPlayer
+                      url={post.link}
+                      dummyClick={() => navigateTo(slug)}
+                    />
+                  </div>
                   <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full md:w-full md:pl-0 md:pt-3">
                     <Link
                       to={slug}

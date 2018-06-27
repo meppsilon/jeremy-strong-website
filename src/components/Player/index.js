@@ -14,7 +14,8 @@ const propTypes = {
   stateIndex: PropTypes.number,
   songIndex: PropTypes.number,
   dummyClick: PropTypes.func,
-  dummyMode: PropTypes.string
+  dummyMode: PropTypes.string,
+  size: PropTypes.string,
 };
 
 const defaultProps = {
@@ -22,6 +23,7 @@ const defaultProps = {
   play: () => null,
   pause: () => null,
   end: () => null,
+  size: '',
   className: "",
   isPlaying: null,
   stateIndex: "",
@@ -49,7 +51,8 @@ class Player extends Component {
       url,
       className,
       dummyClick,
-      dummyMode
+      dummyMode,
+      size
     } = this.props;
     const showPlay = dummyMode === "load" ? false : true;
     const showLoad = dummyMode === "load" ? true : false;
@@ -78,7 +81,9 @@ class Player extends Component {
             showPlay={showPlay}
             showLoad={showLoad}
             className={"absolute"}
+            imgClassName={''}
             dummyClick={dummyClick}
+            size={size}
           />
         )}
       </div>
