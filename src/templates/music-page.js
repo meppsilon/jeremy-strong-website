@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import PostDetail from '../components/PostDetail';
 
 export const MusicPageTemplate = ({ title, description, posts }) => {
@@ -10,7 +11,7 @@ export const MusicPageTemplate = ({ title, description, posts }) => {
         <h2 className="font-light">{description}</h2>
       </div>
       <div className="md:flex md:flex-wrap md:justify-between">
-        {posts.edges.map(({ node: { fields: { slug }, frontmatter: post } }) => (
+        {posts.map(({ node: { fields: { slug }, frontmatter: post } }) => (
           <PostDetail {...post} slug={slug} />
         ))}
       </div>
@@ -30,7 +31,7 @@ const MusicPage = ({ data }) => {
     <MusicPageTemplate
       title={musicPage.frontmatter.title}
       description={musicPage.frontmatter.description}
-      posts={posts}
+      posts={get(posts, 'edges', [])}
     />
   );
 };
