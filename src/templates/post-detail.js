@@ -91,7 +91,7 @@ const PostDetailPage = props => {
     posts.edges[(postIndex + 2) % posts.totalCount],
     posts.edges[(postIndex + 3) % posts.totalCount]
   ];
-  return <PostDetailTemplate {...frontmatter} nextPosts={nextPosts}/>;
+  return <PostDetailTemplate {...frontmatter} nextPosts={nextPosts} />;
 };
 
 export default PostDetailPage;
