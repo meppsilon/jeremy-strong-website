@@ -37,7 +37,7 @@ class Navbar extends Component {
     return (
       <div
         className={classnames(
-          "py-2 w-full z-50 fixed sm:absolute",
+          "py-2 w-full z-40 fixed pin-t sm:absolute",
           navbarIsColored && "navbar-bg"
         )}
       >

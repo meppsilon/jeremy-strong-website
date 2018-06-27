@@ -1,23 +1,34 @@
 import React, { Component } from "react";
-import { ClipLoader } from "react-spinners";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import RealPlayer from "./RealPlayer";
 import DummyPlayer from "./DummyPlayer";
 
 const propTypes = {
-  play: PropTypes.func.isRequired,
-  pause: PropTypes.func.isRequired,
-  changeSong: PropTypes.func.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  stateIndex: PropTypes.number.isRequired,
-  songIndex: PropTypes.number.isRequired,
   url: PropTypes.string.isRequired,
-  dummyClick: PropTypes.func
+  className: PropTypes.string,
+  play: PropTypes.func,
+  pause: PropTypes.func,
+  end: PropTypes.func,
+  isPlaying: PropTypes.bool,
+  stateIndex: PropTypes.number,
+  songIndex: PropTypes.number,
+  dummyClick: PropTypes.func,
+  dummyMode: PropTypes.string,
+  size: PropTypes.string,
 };
 
 const defaultProps = {
-  dummyClick: () => null
+  dummyClick: () => null,
+  play: () => null,
+  pause: () => null,
+  end: () => null,
+  size: '',
+  className: "",
+  isPlaying: null,
+  stateIndex: "",
+  songIndex: "",
+  dummyMode: "load"
 };
 
 class Player extends Component {
@@ -26,44 +37,55 @@ class Player extends Component {
   ready = () => {
     setTimeout(() => {
       this.setState({ ready: true });
-    }, 1500);
+    }, 350);
   };
   render() {
     const {
       play,
       pause,
+      end,
       changeSong,
       isPlaying,
       stateIndex,
       songIndex,
       url,
-      dummyClick
+      className,
+      dummyClick,
+      dummyMode,
+      size
     } = this.props;
-    const showDummy = !this.state.ready && !this.state.hide;
-    const showLoader = !this.state.ready && this.state.hide;
+    const showPlay = dummyMode === "load" ? false : true;
+    const showLoad = dummyMode === "load" ? true : false;
     return (
-      <div className="flex justify-center relative sm:w-full cursor-pointer">
-        {/* <RealPlayer
+      <div
+        className={classnames(
+          "flex justify-center relative sm:w-full cursor-pointer",
+          className
+        )}
+      >
+        <RealPlayer
           play={play}
           pause={pause}
           ready={() => this.ready()}
-          changeSong={changeSong}
+          end={end}
           isPlaying={isPlaying}
           stateIndex={stateIndex}
           songIndex={songIndex}
           url={url}
           isReady={this.state.ready}
-        /> */}
-
-        <DummyPlayer
-          url={url}
-          // hide={() => this.setState({ hide: true })}
-          dummyClick={dummyClick}
         />
-
-        {/* {showLoader && (
-            <ClipLoader color={"#141414"} loading={true} />
-          )} */}
+        {!this.state.ready && (
+          <DummyPlayer
+            url={url}
+            loading={true}
+            showPlay={showPlay}
+            showLoad={showLoad}
+            className={"absolute"}
+            imgClassName={''}
+            dummyClick={dummyClick}
+            size={size}
+          />
+        )}
       </div>
     );
   }

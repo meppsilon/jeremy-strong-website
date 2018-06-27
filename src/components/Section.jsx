@@ -1,28 +1,10 @@
 import React, { Component } from "react";
 import Link, { navigateTo } from "gatsby-link";
 import Player from "./Player";
+import DummyPlayer from "./Player/DummyPlayer";
+import RealPlayer from "./Player/RealPlayer";
 
 class Section extends Component {
-  state = { playing: false, index: null };
-
-  changeSong = length => {
-    if (this.state.index + 1 < length) {
-      this.setState({ playing: true, index: this.state.index + 1 });
-    } else {
-      this.setState({ playing: false });
-    }
-  };
-
-  play = index => {
-    this.setState({ playing: true, index });
-  };
-
-  pause = index => {
-    if (this.state.playing && this.state.index === index) {
-      this.setState({ playing: false });
-    }
-  };
-  // node: { fields: { slug }
   render() {
     const { title, posts, slug, limit } = this.props;
     return (
@@ -46,16 +28,12 @@ class Section extends Component {
                   className="text-white flex flex-col relative py-4 sm:flex-row md:flex-col md:w-1/3 md:px-4"
                   key={`section-post-${post.title}`}
                 >
-                  <Player
-                    play={this.play}
-                    pause={this.pause}
-                    changeSong={() => this.changeSong(posts.length)}
-                    isPlaying={this.state.playing}
-                    stateIndex={this.state.index}
-                    songIndex={i}
-                    url={post.link}
-                    dummyClick={() => navigateTo(slug)}
-                  />
+                  <div className="w-full">
+                    <DummyPlayer
+                      url={post.link}
+                      dummyClick={() => navigateTo(slug)}
+                    />
+                  </div>
                   <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full md:w-full md:pl-0 md:pt-3">
                     <Link
                       to={slug}

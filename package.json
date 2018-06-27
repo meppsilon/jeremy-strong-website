@@ -24,6 +24,7 @@
     "prop-types": "^15.6.0",
     "purgecss": "^1.0.1",
     "react": "^16.2.0",
+    "react-dotdotdot": "^1.2.3",
     "react-helmet": "^5.2.0",
     "react-player": "^1.6.4",
     "react-spinners": "^0.3.2",
