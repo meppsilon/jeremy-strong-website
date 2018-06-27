@@ -24,7 +24,7 @@ class Section extends Component {
   };
   // node: { fields: { slug }
   render() {
-    const { title, posts, slug } = this.props;
+    const { title, posts, slug, limit } = this.props;
     return (
       <div id={title.toLowerCase()} className="bg-black-true">
         <div className="mx-auto sm:w-9/10">
@@ -32,7 +32,7 @@ class Section extends Component {
             {title}
           </div>
           <div className="md:flex md:flex-wrap -mx-4">
-            {posts.edges.map(
+            {posts.edges.slice(0, limit).map(
               (
                 {
                   node: {
@@ -74,7 +74,7 @@ class Section extends Component {
               )
             )}
           </div>
-          {posts.totalCount > 3 && (
+          {posts.totalCount > limit && (
             <Link to={slug} className="flex items-center justify-center py-6">
               See more {title}
             </Link>

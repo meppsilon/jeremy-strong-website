@@ -35,7 +35,7 @@ export default class IndexPage extends React.Component {
             ({
               node: {
                 fields: { slug },
-                frontmatter: { title },
+                frontmatter: { title, limit },
               },
             }) => {
               const sectionPosts = get(
@@ -48,6 +48,7 @@ export default class IndexPage extends React.Component {
                     title={title}
                     posts={sectionPosts}
                     slug={slug}
+                    limit={limit}
                     key={`section-${title}`}
                   />
                 );
@@ -90,6 +91,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             description
+            limit
           }
         }
       }
