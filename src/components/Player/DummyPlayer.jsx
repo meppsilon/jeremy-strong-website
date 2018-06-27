@@ -31,7 +31,7 @@ const YouTubeGetID = url => {
 
 const DummyPlayer = ({ url, dummyClick, showPlay, showLoad, className, size, imgClassName }) => (
   <div
-    className={classnames('w-full h-full aspect-ratio-16/9 overflow-hidden',
+    className={classnames('w-full h-full aspect-ratio-16/9 overflow-hidden cursor-pointer',
     className)}
     // onClick={() => hide()}
     onClick={dummyClick}

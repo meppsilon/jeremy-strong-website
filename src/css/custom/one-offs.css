@@ -24,3 +24,7 @@ body {
 .player-top {
   top: -16.82% !important;
 }
+
+.text-desc-color {
+  color: rgb(189, 189, 189);
+}

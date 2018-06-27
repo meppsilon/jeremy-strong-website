@@ -2,6 +2,7 @@ import React from "react";
 import ReactPlayer from "react-player";
 import Link, { navigateTo } from "gatsby-link";
 import classnames from "classnames";
+import Dotdotdot from 'react-dotdotdot';
 import Player from "../components/Player";
 import DummyPlayer from "../components/Player/DummyPlayer";
 import PostDetail from "../components/PostDetail";
@@ -14,20 +15,25 @@ const YouTubeGetID = url => {
 export class PostDetailTemplate extends React.Component {
   state = { showNavbar: true };
   render() {
-    const { title, link, description, nextPosts } = this.props;
+    const { title, link, description, nextPosts, section } = this.props;
     const { showNavbar } = this.state;
     return (
       <section className="pt-10 text-white">
         <div className="mb-8">
           <Player url={link} size={"maxresdefault"} />
           <div className="w-9/10 mx-auto">
-            <p className="font-semibold text-2xl mt-2">{title}</p>
-            <p className="text-lg py-2">{description}</p>
+            <p className="font-semibold text-lg mt-2">{title}</p>
+            <p
+              className="text-sm leading-tight py-1"
+              style={{ color: "#e4e4e4" }}
+            >
+              {description}
+            </p>
           </div>
         </div>
         <div className="w-9/10 mx-auto">
-          <h2 className="font-light">Next Posts</h2>
-          <div className="flex flex-col">
+          <p className="mb-2 text-sm text-capitalize">{`More ${section}`}</p>
+          <div className="flex flex-col md:flex-row">
             {nextPosts.map(
               ({
                 node: {
@@ -35,26 +41,31 @@ export class PostDetailTemplate extends React.Component {
                   frontmatter: post
                 }
               }) => (
-                <div className="flex">
-                  <div className="w-1/2">
+                <div className="flex mb-4 md:flex-col md:w-1/3">
+                  <div className="w-1/3 sm:w-1/2 md:w-full">
                     <DummyPlayer
                       showPlay={false}
                       url={post.link}
+                      size={"hqdefault"}
                       dummyClick={() => navigateTo(slug)}
                     />
                   </div>
-                  <div className="">
-                    <Link
-                      to={slug}
-                      className="block text-white hover:text-indigo-dark text-center text-lg font-semibold sm:text-left md:text-center"
-                    >
+                  <div
+                    className="w-2/3 pl-2 cursor-pointer sm:w-1/2 md:w-full"
+                    onClick={() => navigateTo(slug)}
+                  >
+                    <p className="block text-white text-sm font-medium text-ellipsis pb-1 hover:text-indigo-dark md:text-center">
                       {post.title}
-                    </Link>
+                    </p>
                     <div
-                      className="text-center pt-2 text-sm font-medium sm:text-left md:text-center"
-                      style={{ color: "#bdbdbd" }}
+                      className="text-xs font-light leading-tight text-ellipsis md:text-center"
+                      style={{ color: "#e4e4e4" }}
                     >
-                      {post.description}
+                      <Dotdotdot clamp={2}>
+                        <p>
+                          {post.description}
+                        </p>
+                      </Dotdotdot>
                     </div>
                   </div>
                 </div>
@@ -74,16 +85,13 @@ const PostDetailPage = props => {
       posts
     }
   } = props;
-  console.log("props", posts);
   const postIndex = posts.edges.map(edge => edge.node.id).indexOf(id);
-  console.log("post index", postIndex);
   const nextPosts = [
     posts.edges[(postIndex + 1) % posts.totalCount],
     posts.edges[(postIndex + 2) % posts.totalCount],
     posts.edges[(postIndex + 3) % posts.totalCount]
   ];
-  console.log("next posts", nextPosts);
-  return <PostDetailTemplate {...frontmatter} nextPosts={nextPosts} />;
+  return <PostDetailTemplate {...frontmatter} nextPosts={nextPosts}/>;
 };
 
 export default PostDetailPage;
@@ -96,6 +104,7 @@ export const postDetailQuery = graphql`
         title
         description
         link
+        section
       }
     }
     posts: allMarkdownRemark(
