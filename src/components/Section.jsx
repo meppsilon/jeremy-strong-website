@@ -13,7 +13,7 @@ class Section extends Component {
           <div className="text-white py-2 text-center music-title text-3xl sm:text-left md:text-center">
             {title}
           </div>
-          <div className="md:flex md:flex-wrap -mx-4">
+          <div className="md:flex md:flex-wrap md:-mx-4">
             {posts.edges.map(
               (
                 {
