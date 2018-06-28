@@ -41,7 +41,7 @@ class Navbar extends Component {
           navbarIsColored && "navbar-bg"
         )}
       >
-        <div className="flex">
+        <div className="flex items-center">
           <SocialMedia socialLinks={socialLinks} />
           {smallest && (
             <MenuButton
