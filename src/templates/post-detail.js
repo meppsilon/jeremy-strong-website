@@ -54,10 +54,10 @@ export class PostDetailTemplate extends React.Component {
                     />
                   </div>
                   <div
-                    className="w-2/3 pl-2 cursor-pointer sm:w-1/2 md:w-full"
+                    className="w-2/3 pl-2 cursor-pointer sm:w-1/2 md:w-full md:pl-0"
                     onClick={() => navigateTo(slug)}
                   >
-                    <p className="block text-white text-sm font-medium text-ellipsis pb-1 hover:text-indigo-dark sm:text-base sm:font-semibold md:text-center md:pt-2 md:text-sm">
+                    <p className="block text-white text-sm font-medium text-ellipsis pb-1 hover:text-indigo-dark sm:text-base sm:font-semibold md:pt-2 md:text-sm">
                       {post.title}
                     </p>
                     <div
