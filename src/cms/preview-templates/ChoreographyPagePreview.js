@@ -1,20 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { MusicPageTemplate } from '../../templates/music-page'
+import { ChoreographyPageTemplate } from '../../templates/choreography-page'
 
-const MusicPagePreview = ({ entry, widgetFor }) => (
-  <MusicPageTemplate
+const ChoreographyPagePreview = ({ entry, widgetFor }) => (
+  <ChoreographyPageTemplate
     title={entry.getIn(['data', 'title'])}
     description={entry.getIn(['data', 'description'])}
     posts={[]}
   />
 )
 
-MusicPagePreview.propTypes = {
+ChoreographyPagePreview.propTypes = {
   entry: PropTypes.shape({
     getIn: PropTypes.func,
   }),
   widgetFor: PropTypes.func,
 }
 
-export default MusicPagePreview
+export default ChoreographyPagePreview

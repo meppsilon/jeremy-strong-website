@@ -7,15 +7,15 @@ import RealPlayer from "./Player/RealPlayer";
 
 class Section extends Component {
   render() {
-    const { title, posts, slug } = this.props;
+    const { title, posts, slug, limit } = this.props;
     return (
       <div id={title.toLowerCase()} className="bg-black-true">
         <div className="mx-auto sm:w-9/10">
           <div className="text-white py-2 text-center music-title text-3xl sm:text-left md:text-center">
             {title}
           </div>
-          <div className="md:flex md:flex-wrap md:-mx-4">
-            {posts.edges.map(
+          <div className="md:flex md:flex-wrap -mx-4">
+            {posts.edges.slice(0, limit).map(
               (
                 {
                   node: {
@@ -55,7 +55,7 @@ class Section extends Component {
               )
             )}
           </div>
-          {posts.totalCount > 3 && (
+          {posts.totalCount > limit && (
             <Link to={slug} className="flex items-center justify-center py-6">
               See more {title}
             </Link>

@@ -7,7 +7,7 @@ import './generated.css';
 const TemplateWrapper = ({
   children,
   data: {
-    sections: { edges: sections },
+    sections: { edges },
     socialLinks: { edges: socialLinks },
   },
 }) => (
@@ -21,7 +21,7 @@ const TemplateWrapper = ({
       rel="stylesheet"
     />
     <Helmet title="Jeremy Strong" />
-    <Navbar sections={sections} socialLinks={socialLinks} />
+    <Navbar sections={edges} socialLinks={socialLinks} />
     <div
       style={{
         margin: '0 auto',
