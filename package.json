@@ -28,6 +28,7 @@
     "react-helmet": "^5.2.0",
     "react-player": "^1.6.4",
     "react-spinners": "^0.3.2",
+    "screenfull": "^3.3.2",
     "tailwindcss": "^0.5.3",
     "uuid": "^3.2.1"
   },

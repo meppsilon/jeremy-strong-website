@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Link, { navigateTo } from "gatsby-link";
+import Dotdotdot from "react-dotdotdot";
 import Player from "./Player";
 import DummyPlayer from "./Player/DummyPlayer";
 import RealPlayer from "./Player/RealPlayer";
@@ -41,12 +42,14 @@ class Section extends Component {
                     >
                       {post.title}
                     </Link>
-                    <div
-                      className="text-center pt-2 text-sm font-medium sm:text-left md:text-center"
-                      style={{ color: "#bdbdbd" }}
-                    >
-                      {post.description}
-                    </div>
+                    <Dotdotdot clamp={3}>
+                      <div
+                        className="text-center pt-2 text-sm font-medium sm:text-left md:text-center"
+                        style={{ color: "#bdbdbd" }}
+                      >
+                        {post.description}
+                      </div>
+                    </Dotdotdot>
                   </div>
                 </div>
               )

@@ -21,11 +21,11 @@ class Navbar extends Component {
     }
   };
 
-  componentWillReceiveProps = (nextProps) => {
+  componentWillReceiveProps = nextProps => {
     if (!nextProps.smallest && this.state.open) {
       this.setState({ open: false });
     }
-  }
+  };
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.checkIfScrolled);
@@ -33,7 +33,8 @@ class Navbar extends Component {
 
   render() {
     const { sections, socialLinks, smallest } = this.props;
-    const navbarIsColored = smallest && (this.state.scrolled || this.state.open);
+    const navbarIsColored =
+      smallest && (this.state.scrolled || this.state.open);
     return (
       <div
         className={classnames(
@@ -42,6 +43,9 @@ class Navbar extends Component {
         )}
       >
         <div className="flex">
+          <Link className="cursor-pointer" to={"/"}>
+            <p className="text-white pl-2 font-bold logo">JS</p>
+          </Link>
           <SocialMedia socialLinks={socialLinks} />
           {smallest && (
             <MenuButton

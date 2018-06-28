@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Kalam:700");
+
 @responsive {
   .w-3\/10 {
     width: 30%;
   }
-
 }
 
 body {
@@ -27,4 +28,19 @@ body {
 
 .text-desc-color {
   color: rgb(189, 189, 189);
+}
+
+.logo {
+  font-family: Kalam;
+  font-size: 28px;
+  line-height: 16px;
+  padding-top: 6px;
+}
+
+.menu-item {
+  padding: 8px 0;
+  border: 1px solid #333333bf;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
 }
