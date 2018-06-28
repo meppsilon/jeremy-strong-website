@@ -42,7 +42,7 @@ class Navbar extends Component {
           navbarIsColored && "navbar-bg"
         )}
       >
-        <div className="flex">
+        <div className="flex items-center">
           <Link className="cursor-pointer" to={"/"}>
             <p className="text-white pl-2 font-bold logo">JS</p>
           </Link>
