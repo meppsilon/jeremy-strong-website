@@ -28,10 +28,10 @@ class BannerContent extends React.Component {
 
           <div className="text-center pt-2">
             <button
-              className="text-center text-base border-white border rounded text-white text-base py-2 px-3"
+              className="text-center text-base border-white border-2 text-white text-base py-2 px-5"
               onClick={() => this.setState({ showModal: true })}
             >
-              Listen Now
+              Watch Video
             </button>
           </div>
         </div>

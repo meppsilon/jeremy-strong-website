@@ -5,7 +5,7 @@ import PostDetail from '../components/PostDetail';
 export const ChoreographyPageTemplate = ({ title, description, posts }) => {
   console.log('choreography page template');
   return (
-    <section className="pt-8 m-8 text-white">
+    <section className="pt-8 text-white">
       <div className="text-center">
         <h1 className="font-semibold my-6">{title}</h1>
         <h2 className="font-light">{description}</h2>

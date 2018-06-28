@@ -7,11 +7,6 @@ import Player from "../components/Player";
 import DummyPlayer from "../components/Player/DummyPlayer";
 import PostDetail from "../components/PostDetail";
 
-const YouTubeGetID = url => {
-  url = url.split(/(vi\/|v%3D|v=|\/v\/|youtu\.be\/|\/embed\/)/);
-  return undefined !== url[2] ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0];
-};
-
 export class PostDetailTemplate extends React.Component {
   state = { showNavbar: true };
   render() {

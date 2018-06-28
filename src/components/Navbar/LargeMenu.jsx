@@ -7,7 +7,7 @@ const LargeMenu = ({ sections }) => (
       <Link
         className="text-white pr-2"
         key={`section-${title.toLowerCase()}-${i}`}
-        to={`/#${title.toLowerCase()}`}
+        to={`/${title.toLowerCase()}`}
       >
         {title}
       </Link>

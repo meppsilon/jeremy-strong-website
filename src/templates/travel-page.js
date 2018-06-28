@@ -6,7 +6,7 @@ import PostDetail from '../components/PostDetail';
 export const TravelPageTemplate = ({ title, description, posts }) => {
   console.log('travel page template');
   return (
-    <section className="pt-8 m-8 text-white">
+    <section className="pt-8 text-white">
       <div className="text-center">
         <h1 className="font-semibold my-6">{title}</h1>
         <h2 className="font-light">{description}</h2>
