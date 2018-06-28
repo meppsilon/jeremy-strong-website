@@ -5,7 +5,7 @@ const SmallMenu = ({ sections, hideMenu }) => (
   <div className="font-semibold text-sm">
     {sections.map(({ node: { frontmatter: { title } } }, i) => (
       <Link
-        className="text-white pr-2 block text-center"
+        className="text-white pr-2 block text-center menu-item curor-pointer"
         key={`section-${title.toLowerCase()}-${i}`}
         onClick={hideMenu}
         to={`/#${title.toLowerCase()}`}

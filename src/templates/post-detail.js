@@ -2,7 +2,7 @@ import React from "react";
 import ReactPlayer from "react-player";
 import Link, { navigateTo } from "gatsby-link";
 import classnames from "classnames";
-import Dotdotdot from 'react-dotdotdot';
+import Dotdotdot from "react-dotdotdot";
 import Player from "../components/Player";
 import DummyPlayer from "../components/Player/DummyPlayer";
 import PostDetail from "../components/PostDetail";
@@ -22,7 +22,7 @@ export class PostDetailTemplate extends React.Component {
         <div className="mb-8">
           <Player url={link} size={"maxresdefault"} />
           <div className="w-9/10 mx-auto">
-            <p className="font-semibold text-lg mt-2">{title}</p>
+            <p className="font-semibold text-lg mt-2 md:text-xl">{title}</p>
             <p
               className="text-sm leading-tight py-1"
               style={{ color: "#e4e4e4" }}
@@ -32,8 +32,11 @@ export class PostDetailTemplate extends React.Component {
           </div>
         </div>
         <div className="w-9/10 mx-auto">
-          <p className="mb-2 text-sm text-capitalize">{`More ${section}`}</p>
-          <div className="flex flex-col md:flex-row">
+          <p
+            className="mb-2 text-sm text-capitalize cursor-pointer md:font-medium"
+            onClick={() => navigateTo(`/${section}`)}
+          >{`More ${section}`}</p>
+          <div className="flex flex-col md:flex-row md:-mx-4">
             {nextPosts.map(
               ({
                 node: {
@@ -41,7 +44,7 @@ export class PostDetailTemplate extends React.Component {
                   frontmatter: post
                 }
               }) => (
-                <div className="flex mb-4 md:flex-col md:w-1/3">
+                <div className="flex mb-4 md:flex-col md:w-1/3 md:px-4">
                   <div className="w-1/3 sm:w-1/2 md:w-full">
                     <DummyPlayer
                       showPlay={false}
@@ -54,17 +57,15 @@ export class PostDetailTemplate extends React.Component {
                     className="w-2/3 pl-2 cursor-pointer sm:w-1/2 md:w-full"
                     onClick={() => navigateTo(slug)}
                   >
-                    <p className="block text-white text-sm font-medium text-ellipsis pb-1 hover:text-indigo-dark md:text-center">
+                    <p className="block text-white text-sm font-medium text-ellipsis pb-1 hover:text-indigo-dark sm:text-base sm:font-semibold md:text-center md:pt-2 md:text-sm">
                       {post.title}
                     </p>
                     <div
-                      className="text-xs font-light leading-tight text-ellipsis md:text-center"
+                      className="text-xs font-light leading-tight text-ellipsis sm:text-sm md:hidden"
                       style={{ color: "#e4e4e4" }}
                     >
                       <Dotdotdot clamp={2}>
-                        <p>
-                          {post.description}
-                        </p>
+                        <p>{post.description}</p>
                       </Dotdotdot>
                     </div>
                   </div>
