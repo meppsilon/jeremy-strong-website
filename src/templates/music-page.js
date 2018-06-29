@@ -6,7 +6,7 @@ import PostDetail from '../components/PostDetail';
 
 export const MusicPageTemplate = (props) => {
   return (
-    <section className="pt-8 text-white h-full">
+    <section className="text-white h-full">
       <SectionPage {...props} />
     </section>
   );

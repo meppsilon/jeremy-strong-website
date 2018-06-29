@@ -30,7 +30,7 @@ export class PostDetailTemplate extends React.Component {
           <p
             className="mb-2 text-sm text-capitalize cursor-pointer md:font-medium"
             onClick={() => navigateTo(`/${section}`)}
-          >{`More ${section}`}</p>
+          >{`Up Next`}</p>
           <div className="flex flex-col md:flex-row md:-mx-4">
             {nextPosts.map(
               ({

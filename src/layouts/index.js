@@ -20,7 +20,9 @@ const TemplateWrapper = ({
   ).filter(color => color)[0];
   console.log('backgorund', backgroundColor)
   return (
-    <div className="bg-black-true" style={{ background: backgroundColor }}>
+    <div className="bg-black-true"
+      // style={{ background: backgroundColor }}
+      >
       <link
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet"
@@ -32,6 +34,7 @@ const TemplateWrapper = ({
       <Helmet title="Jeremy Strong" />
       <Navbar sections={edges} socialLinks={socialLinks} />
       <div
+        className="relative"
         style={{
           margin: "0 auto",
           paddingTop: 0
