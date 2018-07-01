@@ -17,19 +17,19 @@ class SectionPage extends Component {
     return (
       <div
         id={title.toLowerCase()}
-        style={{ background: "linear-gradient(#2b2343, #56a1a3)" }}
+        style={{ background: "linear-gradient(rgb(103, 73, 47), rgb(41, 41, 41))" }}
       >
-        <div className="absolute z-10 w-full flex justify-center">
+        <div className="absolute z-10 w-full flex" style={{ height: '40vh' }}>
           <div
-            className="text-white music-title text-center text-4xl font-semibold self-center"
-            style={{ height: "40vh" }}
+            className="text-white absolute music-title text-center text-4xl font-bold music bg-black-true w-full"
+            style={{ border: '3px solid #ffffff', borderLeft: 'none', borderRight: 'none', fontFamily: 'Lato', top: '30%' }}
           >
             {title}
           </div>
         </div>
         <div
           className="relative"
-          style={{ opacity: 0.6, height: "40vh", overflow: "hidden" }}
+          style={{ opacity: 0.8, height: "40vh", overflow: "hidden" }}
         >
           <img
             className="absolute h-full w-full cover"
@@ -40,7 +40,7 @@ class SectionPage extends Component {
           />
         </div>
         <div
-          className="mx-auto pt-6 sm:w-9/10 z-10 relative"
+          className="mx-auto sm:w-9/10 z-10 relative"
         >
           <div className="">
             {posts.map(
@@ -54,7 +54,7 @@ class SectionPage extends Component {
                 i
               ) => (
                 <div
-                  className="text-white flex flex-col relative py-4 sm:flex-row sm:overflow-hidden sm:mb-16 sm:py-8 sm:border sm:border-white"
+                  className="text-white flex flex-col relative py-4 overflow-hidden sm:flex-row sm:overflow-hidden sm:mb-16 sm:py-8 sm:border sm:border-white"
                   style={{ borderColor: "#ffffff1a" }}
                   key={`section-post-${post.title}`}
                 >
@@ -64,14 +64,19 @@ class SectionPage extends Component {
                   >
                     <img
                       className="absolute transform-xy-center"
-                      style={{ filter: "grayscale(100%)", width: "900px" }}
+                      style={{ filter: "grayscale(100%)", height: '200%' }}
                       src={youtubeGetId(post.link)}
                     />
                   </div>
-                  <div className="w-full sm:pl-8">
+                  <div className="w-full mx-auto pt-6 sm:pl-8">
                     <DummyPlayer
                       url={post.link}
                       dummyClick={() => navigateTo(slug)}
+                      playButtonStyle={{
+                        border: '2px solid white',
+                        color: 'white',
+                        backgroundColor: '#367d63'
+                      }}
                     />
                   </div>
                   <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full sm:z-10">

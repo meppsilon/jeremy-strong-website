@@ -10,7 +10,7 @@ import PostDetail from "../components/PostDetail";
 export const ChoreographyPageTemplate = ({ title, description, posts }) => {
   console.log('choreography page template');
   return (
-    <section className="pt-8 text-white" style={{ background: 'linear-gradient(rgb(0, 14, 41), rgb(0, 47, 58))' }}>
+    <section className="pt-8 text-white" style={{ background: 'linear-gradient(rgb(21, 38, 70), rgb(0, 47, 58))' }}>
       <div id={title.toLowerCase()}>
         <div className="mx-auto sm:w-9/10">
           <div
