@@ -7,8 +7,16 @@
   }
 }
 
+html {
+  @apply .h-full;
+}
+
 body {
-  @apply .bg-black-true;
+  @apply .bg-black-true .h-full;
+}
+
+#___gatsby {
+  @apply .h-full;
 }
 
 .links-social {

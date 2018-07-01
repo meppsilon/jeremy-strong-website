@@ -20,7 +20,7 @@ const TemplateWrapper = ({
   ).filter(color => color)[0];
   console.log('backgorund', backgroundColor)
   return (
-    <div className="bg-black-true"
+    <div className="bg-black-true h-full"
       // style={{ background: backgroundColor }}
       >
       <link
@@ -34,7 +34,7 @@ const TemplateWrapper = ({
       <Helmet title="Jeremy Strong" />
       <Navbar sections={edges} socialLinks={socialLinks} />
       <div
-        className="relative"
+        className="relative h-full"
         style={{
           margin: "0 auto",
           paddingTop: 0

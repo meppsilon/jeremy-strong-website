@@ -10,7 +10,7 @@ import PostDetail from "../components/PostDetail";
 export const ChoreographyPageTemplate = ({ title, description, posts }) => {
   console.log('choreography page template');
   return (
-    <section className="pt-8 text-white" style={{ background: 'linear-gradient(rgb(21, 38, 70), rgb(0, 47, 58))' }}>
+    <section className="pt-8 text-white h-full" style={{ background: 'linear-gradient(rgb(21, 38, 70), rgb(0, 47, 58))' }}>
       <div id={title.toLowerCase()}>
         <div className="mx-auto sm:w-9/10">
           <div
@@ -40,7 +40,7 @@ export const ChoreographyPageTemplate = ({ title, description, posts }) => {
                       dummyClick={() => navigateTo(slug)}
                     />
                   </div>
-                  <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full md:w-full md:pl-0 md:pt-3">
+                  <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full md:w-full md:pl-3">
                     <Link
                       to={slug}
                       className="block text-center text-lg font-semibold text-white sm:text-left md:text-center"
