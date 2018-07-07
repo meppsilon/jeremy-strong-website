@@ -82,11 +82,12 @@ const PostDetailPage = props => {
     }
   } = props;
   const postIndex = posts.edges.map(edge => edge.node.id).indexOf(id);
-  const nextPosts = [
+  let nextPosts = [
     posts.edges[(postIndex + 1) % posts.totalCount],
     posts.edges[(postIndex + 2) % posts.totalCount],
     posts.edges[(postIndex + 3) % posts.totalCount]
   ];
+  if (posts.totalCount <= 3) nextPosts = posts.edges.filter(edge => edge.node.id !== id);
   return <PostDetailTemplate {...frontmatter} nextPosts={nextPosts} />;
 };
 

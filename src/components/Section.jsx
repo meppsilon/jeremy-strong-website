@@ -10,10 +10,10 @@ class Section extends Component {
     const { title, posts, slug, limit } = this.props;
 
     return (
-      <div id={title.toLowerCase()}>
-        <div className="mx-auto sm:w-9/10">
+      <div id={title.toLowerCase()} className="Section">
+        <div className="SectionBody mx-auto sm:w-9/10 py-8">
           <Link
-            className="block font-bold music-title pt-10 sm:text-left text-3xl text-center text-white"
+            className="block font-bold music-title sm:text-left text-3xl text-center text-white"
             to={`/${title.toLowerCase()}`}
           >
             {title}

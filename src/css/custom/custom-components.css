@@ -67,3 +67,16 @@
 .TableRow:hover > .TableData {
   color: #ed8064;
 }
+
+/*
+|-----------------------------------------------------------------------------
+| Section
+|-----------------------------------------------------------------------------
+*/
+.Section .SectionBody {
+  @apply .border-b .border-white;
+}
+
+.Section:last-child .SectionBody {
+  @apply .border-none;
+}
