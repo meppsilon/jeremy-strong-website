@@ -11,7 +11,7 @@ class Section extends Component {
 
     return (
       <div id={title.toLowerCase()} className="Section">
-        <div className="SectionBody mx-auto sm:w-9/10 py-8">
+        <div className="SectionBody mx-auto sm:w-9/10 py-6">
           <Link
             className="block font-bold music-title sm:text-left text-3xl text-center text-white"
             to={`/${title.toLowerCase()}`}
