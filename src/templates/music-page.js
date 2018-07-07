@@ -1,20 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
+import SectionPage from "../components/SectionPage";
 import PostDetail from '../components/PostDetail';
 
-export const MusicPageTemplate = ({ title, description, posts }) => {
+export const MusicPageTemplate = (props) => {
   return (
-    <section className="pt-8 m-8 text-white">
-      <div className="text-center">
-        <h1 className="font-semibold my-6">{title}</h1>
-        <h2 className="font-light">{description}</h2>
-      </div>
-      <div className="md:flex md:flex-wrap md:justify-between">
-        {posts.map(({ node: { fields: { slug }, frontmatter: post } }) => (
-          <PostDetail {...post} slug={slug} />
-        ))}
-      </div>
+    <section className="text-white h-full">
+      <SectionPage {...props} />
     </section>
   );
 };
@@ -26,7 +19,6 @@ MusicPageTemplate.propTypes = {
 
 const MusicPage = ({ data }) => {
   const { musicPage, posts } = data;
-  console.log('posts', posts);
   return (
     <MusicPageTemplate
       title={musicPage.frontmatter.title}

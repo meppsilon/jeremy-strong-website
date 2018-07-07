@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Kalam:700");
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
 @responsive {
   .w-3\/10 {
@@ -6,8 +7,16 @@
   }
 }
 
+html {
+  @apply .h-full;
+}
+
 body {
-  @apply .bg-black-true;
+  @apply .bg-black-true .h-full;
+}
+
+#___gatsby {
+  @apply .h-full;
 }
 
 .links-social {
@@ -43,4 +52,8 @@ body {
   border-bottom: none;
   border-left: none;
   border-right: none;
+}
+
+.section-page-title {
+  font-size: 24px;
 }

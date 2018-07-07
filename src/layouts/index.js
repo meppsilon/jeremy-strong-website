@@ -1,40 +1,53 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import Navbar from '../components/Navbar';
-import './generated.css';
+import React from "react";
+import PropTypes from "prop-types";
+import Helmet from "react-helmet";
+import Navbar from "../components/Navbar";
+import get from "lodash/get";
+import "./generated.css";
 
 const TemplateWrapper = ({
   children,
   data: {
     sections: { edges },
-    socialLinks: { edges: socialLinks },
+    socialLinks: { edges: socialLinks }
   },
-}) => (
-  <div>
-    <link
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <Helmet title="Jeremy Strong" />
-    <Navbar sections={edges} socialLinks={socialLinks} />
-    <div
-      style={{
-        margin: '0 auto',
-        paddingTop: 0,
-      }}
-    >
-      {children()}
+  location: { pathname }
+}) => {
+  const backgroundColor = edges.map(section =>
+    section.node.frontmatter.path === pathname
+      ? section.node.frontmatter.backgroundColor
+      : null
+  ).filter(color => color)[0];
+  console.log('backgorund', backgroundColor)
+  return (
+    <div className="bg-black-true h-full"
+      // style={{ background: backgroundColor }}
+      >
+      <link
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+      />
+      <Helmet title="Jeremy Strong" />
+      <Navbar sections={edges} socialLinks={socialLinks} />
+      <div
+        className="relative h-full"
+        style={{
+          margin: "0 auto",
+          paddingTop: 0
+        }}
+      >
+        {children()}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 TemplateWrapper.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.func
 };
 
 export default TemplateWrapper;
@@ -63,6 +76,8 @@ export const pageQuery = graphql`
           id
           frontmatter {
             title
+            backgroundColor
+            path
           }
         }
       }

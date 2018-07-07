@@ -1,7 +1,8 @@
 ---
 contentKey: social-links
-title: Soundcloud
-link: 'https://soundcloud.com/itskanin'
-icon: soundcloud
 index: 3
+icon: soundcloud
+title: Soundcloud
+link: 'https://soundcloud.com/jremyclz'
 ---
+

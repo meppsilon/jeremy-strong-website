@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "gatsby-link";
+import Link, { navigateTo } from "gatsby-link";
 import Modal from "./Modal";
 
 class BannerContent extends React.Component {
@@ -28,10 +28,10 @@ class BannerContent extends React.Component {
 
           <div className="text-center pt-2">
             <button
-              className="text-center text-base border-white border rounded text-white text-base py-2 px-3"
-              onClick={() => this.setState({ showModal: true })}
+              className="text-center text-base border-white border-2 text-white text-base py-2 px-5"
+              onClick={() => navigateTo('/posts/2018-06-19-try-you/')}
             >
-              Listen Now
+              Watch Video
             </button>
           </div>
         </div>
