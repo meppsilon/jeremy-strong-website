@@ -11,7 +11,7 @@ class Section extends Component {
     return (
       <div id={title.toLowerCase()} className="bg-black-true">
         <div className="mx-auto sm:w-9/10">
-          <div className="text-white py-6 music-title text-center sm:text-left text-3xl font-semibold">
+          <div className="font-bold music-title pt-10 sm:text-left text-3xl text-center text-white">
             {title}
           </div>
           <div className="md:flex md:flex-wrap md:-mx-4">
