@@ -74,7 +74,7 @@
 |-----------------------------------------------------------------------------
 */
 .Section .SectionBody {
-  @apply .border-b .border-white;
+  @apply .border-b .border-grey-light;
 }
 
 .Section:last-child .SectionBody {
