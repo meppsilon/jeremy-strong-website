@@ -7,9 +7,6 @@ import Player from "./Player";
 import DummyPlayer from "./Player/DummyPlayer";
 import RealPlayer from "./Player/RealPlayer";
 
-// https://scontent-lax3-2.cdninstagram.com/vp/39def82b051f9c2caf53bdc4a3d16b74/5BE428E0/t51.2885-15/e35/18444977_471729216500915_6506392802195144704_n.jpg
-// https://scontent-lax3-2.cdninstagram.com/vp/e3d3f304af1a0e3cf1a07aab34c329b4/5BC5ECE0/t51.2885-15/e35/18512332_1204761469633868_8667651170522628096_n.jpg
-
 class MusicSectionPage extends Component {
   render() {
     const { title, posts } = this.props;

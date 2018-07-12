@@ -2,17 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import get from "lodash/get";
 import MusicSectionPage from "../components/MusicSectionPage";
+import SectionPage from "../components/SectionPage";
 
 export const MusicPageTemplate = ({ title, description, posts }) => {
   return (
     <section
-      className="text-white h-full"
+      className="pt-8 text-white h-full"
       style={{
         background: "linear-gradient(rgb(103, 73, 47), rgb(41, 41, 41))"
       }}
     >
       <div id={title.toLowerCase()}>
-        <MusicSectionPage
+        <SectionPage
           title={title}
           description={description}
           posts={posts}
@@ -33,7 +34,7 @@ const MusicPage = ({ data }) => {
     <MusicPageTemplate
       title={musicPage.frontmatter.title}
       description={musicPage.frontmatter.description}
-      posts={get(posts, "edges", [])}
+      posts={posts}
     />
   );
 };
