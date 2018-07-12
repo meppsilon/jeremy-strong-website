@@ -38,11 +38,11 @@ class Navbar extends Component {
     return (
       <div
         className={classnames(
-          "py-2 w-full z-40 fixed sm:absolute",
+          "w-full z-40 fixed sm:absolute",
           navbarIsColored && "navbar-bg"
         )}
       >
-        <div className="flex items-center">
+        <div className="flex items-center py-2">
           <Link className="cursor-pointer" to={"/"}>
             <p className="text-white pl-2 font-bold logo">JS</p>
           </Link>
