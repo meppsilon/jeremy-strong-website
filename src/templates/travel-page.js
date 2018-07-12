@@ -1,20 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import get from 'lodash/get';
-import PostDetail from '../components/PostDetail';
+import SectionPage from "../components/SectionPage";
 
 export const TravelPageTemplate = ({ title, description, posts }) => {
   console.log('travel page template');
   return (
     <section className="pt-8 text-white">
-      <div className="text-center">
-        <h1 className="font-semibold my-6">{title}</h1>
-        <h2 className="font-light">{description}</h2>
-      </div>
-      <div className="md:flex md:flex-wrap md:justify-between">
-        {posts.map(({ node: { frontmatter: post } }) => (
-          <PostDetail {...post} />
-        ))}
+      <div id={title.toLowerCase()}>
+        <SectionPage
+          title={title}
+          description={description}
+          posts={posts}
+        />
       </div>
     </section>
   );
