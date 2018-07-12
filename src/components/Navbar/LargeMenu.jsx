@@ -4,6 +4,7 @@ import Link from "gatsby-link";
 const LargeMenu = ({ sections }) => (
   <div className="font-semibold text-sm">
     {sections.map(({ node: { frontmatter: { title } } }, i) => (
+      title !== 'Travel' &&
       <Link
         className="text-white pr-2"
         key={`section-${title.toLowerCase()}-${i}`}
