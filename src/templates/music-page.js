@@ -7,7 +7,7 @@ import SectionPage from "../components/SectionPage";
 export const MusicPageTemplate = ({ title, description, posts }) => {
   return (
     <section
-      className="pt-8 text-white h-full"
+      className="pt-8 text-white h-full min-h-screen"
       style={{
         background: "linear-gradient(rgb(103, 73, 47), rgb(41, 41, 41))"
       }}

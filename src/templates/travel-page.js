@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import get from 'lodash/get';
 import SectionPage from "../components/SectionPage";
 
 export const TravelPageTemplate = ({ title, description, posts }) => {
