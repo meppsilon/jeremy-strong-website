@@ -6,11 +6,11 @@ export const FitnessPageTemplate = ({ title, description, posts }) => {
   return (
     <section className="pt-8 text-white">
       <div id={title.toLowerCase()}>
-        <SectionPage
+        {/* <SectionPage
           title={title}
           description={description}
           posts={posts}
-        />
+        /> */}
       </div>
     </section>
   );
