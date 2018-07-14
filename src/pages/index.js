@@ -9,7 +9,6 @@ import BannerContent from '../components/BannerContent';
 
 export default class IndexPage extends React.Component {
   render() {
-    console.log('data', this.props);
     const {
       data: {
         sections: { edges: sections },

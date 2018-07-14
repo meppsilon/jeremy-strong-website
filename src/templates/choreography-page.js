@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import SectionPage from '../components/SectionPage';
 
 export const ChoreographyPageTemplate = ({ title, description, posts }) => {
-  console.log('choreography page template');
   return (
     <section
       className="pt-8 text-white h-full min-h-screen"
       style={{ background: 'linear-gradient(rgb(21, 38, 70), rgb(0, 47, 58))' }}
     >
       <div id={title.toLowerCase()}>
-        {console.log('choreography', posts)}
         <SectionPage title={title} description={description} posts={posts} />
       </div>
     </section>

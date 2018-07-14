@@ -3,11 +3,9 @@ import PropTypes from "prop-types";
 import SectionPage from "../components/SectionPage";
 
 export const FitnessPageTemplate = ({ title, description, posts }) => {
-  console.log('fitness page template');
   return (
     <section className="pt-8 text-white">
       <div id={title.toLowerCase()}>
-        {console.log('fitness', posts)}
         <SectionPage
           title={title}
           description={description}

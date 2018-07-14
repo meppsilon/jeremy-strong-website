@@ -5,7 +5,6 @@ import MusicSectionPage from "../components/MusicSectionPage";
 import SectionPage from "../components/SectionPage";
 
 export const MusicPageTemplate = ({ title, description, posts }) => {
-  console.log('music page template');
   return (
     <section
       className="pt-8 text-white h-full min-h-screen"
@@ -14,7 +13,6 @@ export const MusicPageTemplate = ({ title, description, posts }) => {
       }}
     >
       <div id={title.toLowerCase()}>
-        {console.log('music', posts)}
         <SectionPage
           title={title}
           description={description}
