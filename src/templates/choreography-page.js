@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import SectionPage from '../components/SectionPage';
 
 export const ChoreographyPageTemplate = ({ title, description, posts }) => {
-  console.log('choreography page template');
   return (
     <section
       className="pt-8 text-white h-full min-h-screen"

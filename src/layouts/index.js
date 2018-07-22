@@ -18,7 +18,6 @@ const TemplateWrapper = ({
       ? section.node.frontmatter.backgroundColor
       : null
   ).filter(color => color)[0];
-  console.log('backgorund', backgroundColor)
   return (
     <div className="bg-black-true h-full"
       // style={{ background: backgroundColor }}

@@ -41,7 +41,6 @@ class Section extends Component {
                         dummyClick={() => navigateTo(slug)}
                       />
                     </div>
-                    {console.log('slug', slug)}
                     <div className="w-2/3 pt-3 mx-auto sm:pl-6 sm:pt-0 sm:w-full md:w-full md:pl-0 md:pt-3">
                       <Link
                         to={slug}
