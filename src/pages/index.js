@@ -14,10 +14,12 @@ export default class IndexPage extends React.Component {
       data: {
         sections: { edges: sections },
         backgroundContent: { frontmatter: bannerContent },
+        lastPost,
       },
     } = this.props;
 
     const siteTitle = 'Jeremy Strong';
+    const lastPostSlug = lastPost.edges[0].node.fields.slug;
 
     return (
       <div className="bg-black-true">
@@ -28,7 +30,7 @@ export default class IndexPage extends React.Component {
         <BannerContent
           siteTitle={siteTitle}
           bannerTitle={bannerContent.title}
-          bannerLink={bannerContent.link}
+          bannerSlug={lastPostSlug}
         />
         <div>
           {sections.map(
@@ -149,6 +151,21 @@ export const pageQuery = graphql`
             title
             description
             link
+          }
+        }
+      }
+    }
+    lastPost: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "post-detail" } }}
+    	limit: 1
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          fields {
+            slug
           }
         }
       }

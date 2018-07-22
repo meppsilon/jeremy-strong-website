@@ -7,7 +7,7 @@ export const ChoreographyPageTemplate = ({ title, description, posts }) => {
   return (
     <section
       className="pt-8 text-white h-full min-h-screen"
-      style={{ background: 'linear-gradient(rgb(21, 38, 70), rgb(0, 47, 58))' }}
+      style={{ background: 'linear-gradient(rgb(128, 0, 0), rgb(94, 25, 20))' }}
     >
       <div id={title.toLowerCase()}>
         <SectionPage title={title} description={description} posts={posts} />
