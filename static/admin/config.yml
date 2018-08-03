@@ -89,3 +89,20 @@ collections:
           - {label: "Description", name: "description", widget: "string"}
           - {label: "Cover Image", name: "image", widget: "image"}
           - {label: "Post Limit", name: "limit", widget: number}
+      - file: "src/pages/contact/index.md"
+        label: "Contact"
+        name: "contact"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: hidden, default: "contact-page"}
+          - label: "Contact categories"
+            name: "categories"
+            widget: list
+            fields:
+              - {label: "Category Name", name: "name", widget: string}
+              - label: "Contacts"
+                name: contacts
+                widget: list
+                fields:
+                  - {label: "Contact Name", name: "name", widget: string}
+                  - {label: "Email", name: "email", widget: string}
+                  - {label: "Phone Number", name: "phone", widget: string, required: false}
