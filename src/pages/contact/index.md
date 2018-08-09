@@ -1,21 +1,20 @@
 ---
 templateKey: "contact-page"
+index: 4
+path: /contact
+title: Contact
 categories:
   - contacts:
-      - email: saul@goodvibecrew.com
-        name: Saul Luzeus
-        phone: (310) 944-8080
+      - email: jstrongmanagement@gmail.com
+        name: Jeremy Strong
     name: Management
   - contacts:
-      - email: joshua@rcwmediagroup.com
-        name: Joshua Pinkay
-        phone: (504) 274-5086
-      - email: casandra@rcwmediagroup.com
-        name: Casandra Walker
-        phone: (323) 979-8417
+      - email: joshua@mediagroup.com
+        name: Joshua Media
+        phone: (555) 555-5555
     name: Press/Media Inquiries
   - contacts:
-      - email: winwinmusic1@gmail.com
-        name: Jay Dnairo
+      - email: record@email.com
+        name: Jay Record
     name: Record Label
 ---

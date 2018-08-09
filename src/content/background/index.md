@@ -2,6 +2,6 @@
 contentKey: background-content
 type: image
 media: /img/banner-image.jpg
-link: 'https://www.youtube.com/watch?v=hSDSTceJb9c'
+link: '/posts/2018-06-19-kickback/'
 title: KickBack
 ---

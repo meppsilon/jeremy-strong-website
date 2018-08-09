@@ -29,7 +29,7 @@ export default class IndexPage extends React.Component {
         <BannerContent
           siteTitle={siteTitle}
           bannerTitle={bannerContent.title}
-          bannerSlug={lastPostSlug}
+          bannerSlug={bannerContent.link}
         />
         <div>
           {sections.map(
