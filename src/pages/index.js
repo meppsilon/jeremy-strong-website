@@ -6,6 +6,7 @@ import BackgroundMedia from '../components/BackgroundMedia';
 import Navbar from '../components/Navbar';
 import Section from '../components/Section';
 import BannerContent from '../components/BannerContent';
+import EmailBanner from '../components/EmailBanner';
 
 export default class IndexPage extends React.Component {
   render() {
@@ -31,6 +32,7 @@ export default class IndexPage extends React.Component {
           bannerTitle={bannerContent.title}
           bannerSlug={bannerContent.link}
         />
+        <EmailBanner />
         <div>
           {sections.map(
             ({
