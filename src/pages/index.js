@@ -75,7 +75,6 @@ export const pageQuery = graphql`
   query IndexQuery {
     backgroundContent: markdownRemark(frontmatter: { contentKey: { eq: "background-content" } }) {
       frontmatter {
-        type
         media
         title
         link
