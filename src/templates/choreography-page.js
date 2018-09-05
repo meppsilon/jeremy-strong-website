@@ -1,15 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import SectionPage from '../components/SectionPage';
+import React from "react";
+import PropTypes from "prop-types";
+import Section from "../components/Section";
 
 export const ChoreographyPageTemplate = ({ title, description, posts }) => {
   return (
     <section
       className="pt-8 text-white h-full min-h-screen"
-      style={{ background: 'linear-gradient(rgb(128, 0, 0), rgb(94, 25, 20))' }}
+      style={{ background: "linear-gradient(rgb(128, 0, 0), rgb(94, 25, 20))" }}
     >
       <div id={title.toLowerCase()}>
-        <SectionPage title={title} description={description} posts={posts} />
+        <Section
+          title={title}
+          description={description}
+          posts={posts}
+          titleClassName="text-white block text-center text-4xl font-semibold self-center py-3 w-full"
+        />
       </div>
     </section>
   );
@@ -17,7 +22,7 @@ export const ChoreographyPageTemplate = ({ title, description, posts }) => {
 
 ChoreographyPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  content: PropTypes.string
 };
 
 const ChoreographyPage = ({ data }) => {
@@ -33,7 +38,7 @@ const ChoreographyPage = ({ data }) => {
 };
 
 ChoreographyPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 };
 
 export default ChoreographyPage;
@@ -66,6 +71,7 @@ export const choreographyPageQuery = graphql`
             title
             description
             link
+            image
           }
         }
       }

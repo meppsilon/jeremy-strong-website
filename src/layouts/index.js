@@ -5,23 +5,19 @@ import Navbar from "../components/Navbar";
 import get from "lodash/get";
 import "./generated.css";
 
-const TemplateWrapper = ({
-  children,
-  data: {
+const TemplateWrapper = ({ children, data, location: { pathname } }) => {
+  const {
     sections: { edges },
     socialLinks: { edges: socialLinks }
-  },
-  location: { pathname }
-}) => {
-  const backgroundColor = edges.map(section =>
-    section.node.frontmatter.path === pathname
-      ? section.node.frontmatter.backgroundColor
-      : null
-  ).filter(color => color)[0];
+  } = data;
+  const sections = edges
+    .map(({ node: { frontmatter: { title } } }) => {
+      const sectionPosts = get(data, `${title.toLowerCase()}Posts`);
+      if (sectionPosts || title === "Contact") return title;
+    })
+    .filter(title => title);
   return (
-    <div className="bg-black-true h-full"
-      // style={{ background: backgroundColor }}
-      >
+    <div className="bg-black-true h-full">
       <link
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet"
@@ -31,7 +27,7 @@ const TemplateWrapper = ({
         rel="stylesheet"
       />
       <Helmet title="Jeremy Strong" />
-      <Navbar sections={edges} socialLinks={socialLinks} />
+      <Navbar sections={sections} socialLinks={socialLinks} />
       <div
         className="relative h-full"
         style={{
@@ -66,6 +62,7 @@ export const pageQuery = graphql`
         }
       }
     }
+
     sections: allMarkdownRemark(
       sort: { order: ASC, fields: [frontmatter___index] },
       filter: { frontmatter: { templateKey: { regex: "/\\w*-page/" } } }
@@ -77,6 +74,82 @@ export const pageQuery = graphql`
             title
             backgroundColor
             path
+          }
+        }
+      }
+    }
+    musicPosts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "music" } }}
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            link
+          }
+        }
+      }
+    }
+    choreographyPosts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "choreography" } }}
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            link
+          }
+        }
+      }
+    }
+    fitnessPosts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "fitness" } }}
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            link
+          }
+        }
+      }
+    }
+    travelPosts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "travel" } }}
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            link
           }
         }
       }

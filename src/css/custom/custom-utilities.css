@@ -164,6 +164,14 @@ a.scroll-invisible::-webkit-scrollbar,
   padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
 }
 
+.aspect-ratio-4\/3 {
+  padding-top: 75%;
+}
+
+.aspect-ratio-4\/5 {
+  padding-top: 125%;
+}
+
 
 /*
 |-----------------------------------------------------------------------------

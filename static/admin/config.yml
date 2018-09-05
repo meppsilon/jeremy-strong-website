@@ -38,8 +38,8 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text", required: false}
-      - {label: "Cover Image", name: "image", widget: image, required: false}
-      - {label: "Social Link", name: "link", widget: "string", required: false}
+      - {label: "Image (leave blank if you are adding a video)", name: image, widget: file}
+      - {label: "Video Link (leave blank if you are adding an image)", name: "link", widget: "string", required: false}
       - {label: "Section", name: "section", widget: "select", options: ["music", "choreography", "fitness", "travel"], default: "music"}
 
   - name: "pages"
@@ -52,7 +52,6 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "choreography-page"}
           - {label: "Index", name: "index", widget: "hidden", default: 1}
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Cover Image", name: "image", widget: "image"}
           - {label: "Post Limit", name: "limit", widget: number}
 
       - file: "src/pages/music/index.md"
@@ -62,7 +61,6 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "music-page"}
           - {label: "Index", name: "index", widget: "hidden", default: 0}
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Cover Image", name: "image", widget: "image"}
           - {label: "Post Limit", name: "limit", widget: number}
 
       - file: "src/pages/fitness/index.md"
@@ -72,7 +70,6 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "fitness-page"}
           - {label: "Index", name: "index", widget: "hidden", default: 2}
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Cover Image", name: "image", widget: "image"}
           - {label: "Post Limit", name: "limit", widget: number}
 
       - file: "src/pages/travel/index.md"
@@ -82,7 +79,6 @@ collections:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "travel-page"}
           - {label: "Index", name: "index", widget: "hidden", default: 3}
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Cover Image", name: "image", widget: "image"}
           - {label: "Post Limit", name: "limit", widget: number}
       - file: "src/pages/contact/index.md"
         label: "Contact"

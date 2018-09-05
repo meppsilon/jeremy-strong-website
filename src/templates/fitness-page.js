@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SectionPage from "../components/SectionPage";
+import Section from "../components/Section";
 
 export const FitnessPageTemplate = ({ title, description, posts }) => {
   return (
     <section className="pt-8 text-white">
       <div id={title.toLowerCase()}>
-        <SectionPage
+        <Section
           title={title}
           description={description}
           posts={posts}
+          titleClassName="text-white block text-center text-4xl font-semibold self-center py-3 w-full"
         />
       </div>
     </section>
@@ -67,6 +68,7 @@ export const fitnessPageQuery = graphql`
             title
             description
             link
+            image
           }
         }
       }

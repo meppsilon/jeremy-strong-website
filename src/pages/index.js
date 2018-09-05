@@ -113,6 +113,7 @@ export const pageQuery = graphql`
             title
             description
             link
+            image
           }
         }
       }
@@ -132,6 +133,7 @@ export const pageQuery = graphql`
             title
             description
             link
+            image
           }
         }
       }
@@ -151,6 +153,27 @@ export const pageQuery = graphql`
             title
             description
             link
+            image
+          }
+        }
+      }
+    }
+    travelPosts: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] },
+      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "travel" } }}
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            link
+            image
           }
         }
       }

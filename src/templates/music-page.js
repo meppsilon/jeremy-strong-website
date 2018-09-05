@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import get from "lodash/get";
-import MusicSectionPage from "../components/MusicSectionPage";
-import SectionPage from "../components/SectionPage";
+import Section from "../components/Section";
 
 export const MusicPageTemplate = ({ title, description, posts }) => {
   return (
@@ -13,10 +12,11 @@ export const MusicPageTemplate = ({ title, description, posts }) => {
       }}
     >
       <div id={title.toLowerCase()}>
-        <SectionPage
+        <Section
           title={title}
           description={description}
           posts={posts}
+          titleClassName="text-white block text-center text-4xl font-semibold self-center py-3 w-full"
         />
       </div>
     </section>
@@ -73,6 +73,7 @@ export const musicPageQuery = graphql`
             title
             description
             link
+            image
           }
         }
       }

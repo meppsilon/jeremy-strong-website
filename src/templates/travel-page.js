@@ -1,17 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import get from 'lodash/get';
-import SectionPage from "../components/SectionPage";
+import React from "react";
+import PropTypes from "prop-types";
+import get from "lodash/get";
+import Section from "../components/Section";
 
 export const TravelPageTemplate = ({ title, description, posts }) => {
   return (
-    <section className="pt-8 text-white">
+    <section
+      className="pt-8 text-white h-full min-h-screen"
+    >
       <div id={title.toLowerCase()}>
-        {/* <SectionPage
+        <Section
           title={title}
           description={description}
           posts={posts}
-        /> */}
+          titleClassName="text-white block text-center text-4xl font-semibold self-center py-3 w-full"
+        />
       </div>
     </section>
   );
@@ -19,23 +22,22 @@ export const TravelPageTemplate = ({ title, description, posts }) => {
 
 TravelPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  content: PropTypes.string
 };
 
 const TravelPage = ({ data }) => {
   const { travelPage, posts } = data;
-
   return (
     <TravelPageTemplate
       title={travelPage.frontmatter.title}
       description={travelPage.frontmatter.description}
-      posts={get(posts, 'edges', [])}
+      posts={posts}
     />
   );
 };
 
 TravelPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 };
 
 export default TravelPage;
@@ -49,8 +51,13 @@ export const travelPageQuery = graphql`
       }
     }
     posts: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "post-detail" }, section: { eq: "travel" } }}
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: {
+        frontmatter: {
+          templateKey: { eq: "post-detail" }
+          section: { eq: "travel" }
+        }
+      }
     ) {
       totalCount
       edges {
@@ -63,6 +70,7 @@ export const travelPageQuery = graphql`
             title
             description
             link
+            image
           }
         }
       }

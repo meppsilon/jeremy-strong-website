@@ -1,30 +1,18 @@
-import React from 'react';
-import Link from 'gatsby-link';
+import React from "react";
+import Link from "gatsby-link";
 
 const SmallMenu = ({ sections, hideMenu }) => (
   <div className="font-semibold text-sm">
-    {sections
-      .filter(section => section.node.frontmatter.title !== 'Travel')
-      .map(
-        (
-          {
-            node: {
-              frontmatter: { title },
-            },
-          },
-          i,
-        ) =>
-          (
-            <Link
-              className="text-white pr-2 block text-center menu-item curor-pointer"
-              key={`section-${title.toLowerCase()}-${i}`}
-              onClick={hideMenu}
-              to={`/${title.toLowerCase()}`}
-            >
-              {title}
-            </Link>
-          ),
-      )}
+    {sections.map((title, i) => (
+      <Link
+        className="text-white pr-2 block text-center menu-item curor-pointer"
+        key={`section-${title.toLowerCase()}-${i}`}
+        onClick={hideMenu}
+        to={`/${title.toLowerCase()}`}
+      >
+        {title}
+      </Link>
+    ))}
   </div>
 );
 

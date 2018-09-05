@@ -5,6 +5,9 @@
   .w-3\/10 {
     width: 30%;
   }
+  .desc-height {
+    height: 60px;
+  }
 }
 
 html {
