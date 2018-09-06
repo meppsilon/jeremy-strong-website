@@ -36,7 +36,7 @@ class Post extends Component {
             {post.title}
           </div>
           <div className="md:desc-height">
-            <Dotdotdot clamp={3}>
+            <Dotdotdot clamp={post.musicLinks ? 1 : 3}>
               <div
                 className="text-center pt-2 text-sm font-medium sm:text-left md:text-center"
                 style={{ color: "#bdbdbd" }}
@@ -44,20 +44,20 @@ class Post extends Component {
                 {post.description}
               </div>
             </Dotdotdot>
+            {post.musicLinks && (
+              <div id="musicLinks" className="text-center">
+                {post.musicLinks.map(musicLink => (
+                  <a href={musicLink.link}>
+                    <i
+                      className={`fa text-white pt-2 pr-2 fa-${musicLink.type.toLowerCase()}`}
+                      style={{ fontSize: '1.25rem' }}
+                      aria-hidden="true"
+                    />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
-          {post.musicLinks && (
-            <div id="musicLinks" className="text-center">
-              {post.musicLinks.map(musicLink => (
-                <a href={musicLink.link}>
-                  <i
-                    className={`fa text-white pt-2 pr-2 fa-${musicLink.type.toLowerCase()}`}
-                    style={{ fontSize: '1.5rem' }}
-                    aria-hidden="true"
-                  />
-                </a>
-              ))}
-            </div>
-          )}
         </div>
       </div>
     );
