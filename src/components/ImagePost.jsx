@@ -18,10 +18,9 @@ const defaultProps = {
 
 class ImagePost extends Component {
   componentDidMount() {
-    this.Lightbox = require("react-image-lightbox");
     // a hack because react lighbox needs the window element or it will throw
     // an error in production
-    this.hasMounted = true;
+    this.Lightbox = require("react-image-lightbox").default;
   }
   render() {
     const { image, className, onOpen, onClose, modalIsOpen } = this.props;
