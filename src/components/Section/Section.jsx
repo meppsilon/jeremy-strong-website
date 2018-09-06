@@ -22,6 +22,7 @@ class Section extends Component {
       ));
 
   render() {
+    if (!this.props.posts || !this.props.posts.edges) return null;
     const { title, posts, slug, limit, titleClassName } = this.props;
     const sectionClassName = "md:flex md:flex-wrap md:-mx-4";
     const children = this.renderChildren();
