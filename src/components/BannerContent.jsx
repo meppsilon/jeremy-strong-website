@@ -1,7 +1,8 @@
 import React from 'react';
 import Link, { navigateTo } from 'gatsby-link';
+import startsWith from 'lodash/startsWith';
 
-const BannerContent = ({ siteTitle, bannerTitle, bannerSlug }) => (
+const BannerContent = ({ siteTitle, bannerTitle, bannerSlug, bannerButton }) => (
   <div className="w-screen flex h-screen">
     <div className="self-center absolute w-full flex flex-col text-white">
       <h1 className="text-center">
@@ -18,9 +19,9 @@ const BannerContent = ({ siteTitle, bannerTitle, bannerSlug }) => (
       <div className="text-center pt-2">
         <button
           className="text-center text-base border-white border-2 text-white text-base py-2 px-5"
-          onClick={() => navigateTo(bannerSlug)}
+          onClick={() => { startsWith(bannerSlug, '/') ? navigateTo(bannerSlug) : window.location = bannerSlug; }}
         >
-          Watch Video
+          {bannerButton}
         </button>
       </div>
     </div>

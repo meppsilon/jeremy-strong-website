@@ -10,7 +10,7 @@ import PostDetail from "../components/PostDetail";
 export class PostDetailTemplate extends React.Component {
   state = { showNavbar: true };
   render() {
-    const { title, link, description, nextPosts, section } = this.props;
+    const { title, link, description, nextPosts, section, musicLinks } = this.props;
     const { showNavbar } = this.state;
     return (
       <section className="pt-10 text-white">
@@ -24,6 +24,19 @@ export class PostDetailTemplate extends React.Component {
             >
               {description}
             </p>
+            {musicLinks && (
+              <div id="musicLinks">
+                {musicLinks.map(musicLink => (
+                  <a href={musicLink.link}>
+                    <i
+                      className={`fa text-white pt-2 pr-2 fa-${musicLink.type.toLowerCase()}`}
+                      style={{ fontSize: '1.5rem' }}
+                      aria-hidden="true"
+                    />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
         <div className="w-9/10 mx-auto">
@@ -88,6 +101,7 @@ const PostDetailPage = props => {
     posts.edges[(postIndex + 3) % posts.totalCount]
   ];
   if (posts.totalCount <= 3) nextPosts = posts.edges.filter(edge => edge.node.id !== id);
+  console.log('frontmatter', frontmatter);
   return <PostDetailTemplate {...frontmatter} nextPosts={nextPosts} />;
 };
 
@@ -102,6 +116,10 @@ export const postDetailQuery = graphql`
         description
         link
         section
+        musicLinks {
+          type
+          link
+        }
       }
     }
     posts: allMarkdownRemark(

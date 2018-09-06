@@ -17,6 +17,7 @@ collections:
           - {label: "Media File", name: media, widget: file}
           - {label: "Link", name: link, widget: string}
           - {label: "Background Title", name: title, widget: string}
+          - {label: "Button Text", name: buttonText, widget: string, default: "Watch Video"}
 
   - name: "socialLinks"
     label: "Social Links"
@@ -41,6 +42,13 @@ collections:
       - {label: "Image (leave blank if you are adding a video)", name: image, widget: file, default: ""}
       - {label: "Video Link (leave blank if you are adding an image)", name: "link", widget: "string", required: false, default: ""}
       - {label: "Section", name: "section", widget: "select", options: ["music", "choreography", "fitness", "travel"], default: "music"}
+      - label: "Music Links"
+        name: musicLinks
+        widget: list
+        fields:
+          - {label: "Type", name: type, widget: select, options: ["spotify", "apple"]}
+          - {label: "Link", name: link, widget: string}
+        required: false
 
   - name: "pages"
     label: "Pages"

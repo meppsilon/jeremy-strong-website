@@ -31,6 +31,7 @@ export default class IndexPage extends React.Component {
           siteTitle={siteTitle}
           bannerTitle={bannerContent.title}
           bannerSlug={bannerContent.link}
+          bannerButton={bannerContent.buttonText}
         />
         <EmailBanner />
         <div>
@@ -78,6 +79,7 @@ export const pageQuery = graphql`
         media
         title
         link
+        buttonText
       }
     }
     sections: allMarkdownRemark(
@@ -114,6 +116,10 @@ export const pageQuery = graphql`
             description
             link
             image
+            musicLinks {
+              type
+              link
+            }
           }
         }
       }
