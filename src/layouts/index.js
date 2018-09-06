@@ -91,8 +91,6 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            description
-            link
           }
         }
       }
@@ -110,8 +108,6 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            description
-            link
           }
         }
       }
@@ -129,8 +125,6 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            description
-            link
           }
         }
       }
@@ -148,8 +142,6 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            description
-            link
           }
         }
       }
