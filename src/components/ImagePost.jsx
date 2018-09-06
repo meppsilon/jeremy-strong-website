@@ -17,6 +17,11 @@ const defaultProps = {
 };
 
 class ImagePost extends Component {
+  componentDidMount() {
+    // a hack because react lighbox needs the window element or it will throw
+    // an error in production
+    this.hasMounted = true;
+  }
   render() {
     const { image, className, onOpen, onClose, modalIsOpen } = this.props;
     return (
@@ -32,7 +37,7 @@ class ImagePost extends Component {
           className="pin-t pin-l pin-b pin-r h-full cover absolute"
           src={image}
         />
-        {modalIsOpen && (
+        {modalIsOpen && this.hasMounted && (
           <Lightbox
             mainSrc={image}
             onCloseRequest={onClose}
