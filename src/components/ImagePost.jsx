@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Link, { navigateTo } from "gatsby-link";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import Lightbox from "react-image-lightbox";
+// import Lightbox from "react-image-lightbox";
 import 'react-image-lightbox/style.css';
 
 const propTypes = {
@@ -18,12 +18,14 @@ const defaultProps = {
 
 class ImagePost extends Component {
   componentDidMount() {
+    this.Lightbox = require("react-image-lightbox");
     // a hack because react lighbox needs the window element or it will throw
     // an error in production
     this.hasMounted = true;
   }
   render() {
     const { image, className, onOpen, onClose, modalIsOpen } = this.props;
+    const Lightbox = this.Lightbox;
     return (
       <div
         className={classnames(
@@ -37,7 +39,7 @@ class ImagePost extends Component {
           className="pin-t pin-l pin-b pin-r h-full cover absolute"
           src={image}
         />
-        {modalIsOpen && this.hasMounted && (
+        {modalIsOpen && Lightbox && (
           <Lightbox
             mainSrc={image}
             onCloseRequest={onClose}
