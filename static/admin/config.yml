@@ -38,8 +38,8 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text", required: false}
-      - {label: "Image (leave blank if you are adding a video)", name: image, widget: file}
-      - {label: "Video Link (leave blank if you are adding an image)", name: "link", widget: "string", required: false}
+      - {label: "Image (leave blank if you are adding a video)", name: image, widget: file, default: ""}
+      - {label: "Video Link (leave blank if you are adding an image)", name: "link", widget: "string", required: false, default: ""}
       - {label: "Section", name: "section", widget: "select", options: ["music", "choreography", "fitness", "travel"], default: "music"}
 
   - name: "pages"
