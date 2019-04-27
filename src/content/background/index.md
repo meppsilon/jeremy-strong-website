@@ -1,8 +1,8 @@
 ---
 contentKey: background-content
 media: /img/banner-image.jpg
-link: 'https://www.youtube.com/watch?v=0aPXdsnjpxo'
-title: Radiant light
+link: 'https://youtu.be/IoPJ9u9L7h8'
+title: All Stars Aligned
 buttonText: Watch Video
 ---
 
