@@ -2,7 +2,7 @@
 templateKey: post-detail
 title: 'Birthday Behavior '
 date: '2019-07-12T17:21:49+02:00'
-description: Enjoy!
+description: 'Directed By: Jeremy Strong'
 image: ''
 link: 'https://youtu.be/pIyd9jztaTE'
 section: music
