@@ -1,8 +1,8 @@
 ---
 contentKey: background-content
-media: /img/banner-image.jpg
-link: 'https://youtu.be/IoPJ9u9L7h8'
-title: All Stars Aligned
+media: /img/birthday-behavior-cover-explicit.jpg
+link: 'https://youtu.be/KwabYgtPiSM'
+title: Birthday Behavior
 buttonText: Watch Video
 ---
 
