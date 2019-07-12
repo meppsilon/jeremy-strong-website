@@ -1,7 +1,7 @@
 ---
 contentKey: background-content
-media: /img/birthday-behavior-cover-explicit.jpg
-link: 'https://youtu.be/KwabYgtPiSM'
+media: /img/banner-image.jpg
+link: 'https://youtu.be/llJKdDQduPY'
 title: Birthday Behavior
 buttonText: Watch Video
 ---
