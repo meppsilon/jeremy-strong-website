@@ -18,6 +18,13 @@ collections:
           - {label: "Link", name: link, widget: string}
           - {label: "Background Title", name: title, widget: string}
           - {label: "Button Text", name: buttonText, widget: string, default: "Watch Video"}
+          - label: "Music Links"
+            name: musicLinks
+            widget: list
+            fields:
+              - {label: "Type", name: type, widget: select, options: ["spotify", "apple", "youtube", "amazon"]}
+              - {label: "Link", name: link, widget: string}
+            required: false
 
   - name: "socialLinks"
     label: "Social Links"
