@@ -10,6 +10,7 @@ musicLinks:
   - link: >-
       https://music.apple.com/us/album/good-morning-single/1487396272?app=music&ign-mpt=uo%3D4
     type: apple
-  - {}
+  - link: 'https://youtu.be/2uXm4GF2EMU'
+    type: youtube
 ---
 
