@@ -5,8 +5,6 @@ link: 'https://youtu.be/2uXm4GF2EMU'
 title: Good Morning
 buttonText: Listen Now
 musicLinks:
-  - link: 'https://music.apple.com/us/album/birthday-behavior/1463079146?i=1463079147'
-    type: apple
   - link: 'https://open.spotify.com/album/7CEc67tbky79i0KyM8KmwW'
     type: spotify
   - link: >-
