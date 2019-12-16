@@ -60,6 +60,7 @@ collections:
   - name: "events"
     label: "Events"
     folder: "src/content/events"
+    create: true
     fields:
       - {label: "Content Key", name: "contentKey", widget: hidden, default: "events"}
       - {label: "Title", name: "title", widget: "string"}
