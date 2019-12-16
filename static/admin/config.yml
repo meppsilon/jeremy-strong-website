@@ -56,20 +56,20 @@ collections:
           - {label: "Type", name: type, widget: select, options: ["spotify", "apple"]}
           - {label: "Link", name: link, widget: string}
         required: false
-    
-    - name: "events"
-      label: "Events"
-      folder: "src/content/events"
-      fields:
-        - {label: "Content Key", name: "contentKey", widget: hidden, default: "events"}
-        - {label: "Title", name: "title", widget: "string"}
-        - {label: "Event Date", name: "date", widget: datetime}
-        - {label: "Description", name: "description", widget: "text", required: false}
-        - label: "Photos"
-          name: photos
-          widget: list
-          fields:
-            - {label: "Photo", name: "photo", widget: file}
+
+  - name: "events"
+    label: "Events"
+    folder: "src/content/events"
+    fields:
+      - {label: "Content Key", name: "contentKey", widget: hidden, default: "events"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Event Date", name: "date", widget: datetime}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - label: "Photos"
+        name: photos
+        widget: list
+        fields:
+          - {label: "Photo", name: "photo", widget: file}
 
   - name: "pages"
     label: "Pages"
