@@ -56,6 +56,20 @@ collections:
           - {label: "Type", name: type, widget: select, options: ["spotify", "apple"]}
           - {label: "Link", name: link, widget: string}
         required: false
+    
+    - name: "events"
+      label: "Events"
+      folder: "src/content/events"
+      fields:
+        - {label: "Content Key", name: "contentKey", widget: hidden, default: "events"}
+        - {label: "Title", name: "title", widget: "string"}
+        - {label: "Event Date", name: "date", widget: datetime}
+        - {label: "Description", name: "description", widget: "text", required: false}
+        - label: "Photos"
+          name: photos
+          widget: list
+          fields:
+            - {label: "Photo", name: "photo", widget: file}
 
   - name: "pages"
     label: "Pages"
@@ -86,13 +100,30 @@ collections:
           - {label: "Index", name: "index", widget: "hidden", default: 2}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Post Limit", name: "limit", widget: number}
+      - file: "src/pages/events/index.md"
+        label: "Events"
+        name: "events"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "events-page"}
+          - {label: "Index", name: "index", widget: "hidden", default: 3}
+          - label: "Event"
+            name: "event"
+            widget: list
+            fields:
+              - {label: "Event Name", name: "name", widget: string}
+              - {label: "Event Date", name: "date", widget: datetime}
+              - label: "Photos"
+                name: "photos"
+                widget: list
+                fields:
+                  - {label: "Photo", name: "photo", widget: file}
 
       - file: "src/pages/travel/index.md"
         label: "Travel"
         name: "travel"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "travel-page"}
-          - {label: "Index", name: "index", widget: "hidden", default: 3}
+          - {label: "Index", name: "index", widget: "hidden", default: 5}
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Post Limit", name: "limit", widget: number}
       - file: "src/pages/contact/index.md"
@@ -100,6 +131,7 @@ collections:
         name: "contact"
         fields:
           - {label: "Template Key", name: "templateKey", widget: hidden, default: "contact-page"}
+          - {label: "Index", name: "index", widget: hidden, default: 4}
           - label: "Contact categories"
             name: "categories"
             widget: list

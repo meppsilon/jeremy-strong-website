@@ -13,9 +13,10 @@ const TemplateWrapper = ({ children, data, location: { pathname } }) => {
   const sections = edges
     .map(({ node: { frontmatter: { title } } }) => {
       const sectionPosts = get(data, `${title.toLowerCase()}Posts`);
-      if (sectionPosts || title === "Contact") return title;
+      if (sectionPosts || title === "Contact" || title === "Events") return title;
     })
     .filter(title => title);
+  console.log('sections', sections, edges);
   return (
     <div className="bg-black-true h-full">
       <link

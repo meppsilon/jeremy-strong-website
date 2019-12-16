@@ -1,6 +1,6 @@
 ---
 templateKey: "contact-page"
-index: 4
+index: 5
 path: /contact
 title: Contact
 categories:
