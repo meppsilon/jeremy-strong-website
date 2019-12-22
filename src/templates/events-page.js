@@ -25,13 +25,14 @@ EventsPageTemplate.propTypes = {
 };
 
 const EventsPage = ({ data }) => {
-  const { eventsPage } = data;
+  const { eventsPage, events } = data;
   console.log('data', data);
 
   return (
     <EventsPageTemplate
       title={eventsPage.frontmatter.title}
       description={eventsPage.frontmatter.description}
+      events={events}
     />
   );
 };
@@ -48,6 +49,31 @@ export const eventsPageQuery = graphql`
       frontmatter {
         title
         description
+      }
+    }
+    events: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: {
+        frontmatter: {
+          contentKey: { eq: "events" }
+        }
+      }
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            description
+            photos {
+              photo
+            }
+          }
+        }
       }
     }
   }
