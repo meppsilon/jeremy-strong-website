@@ -35,9 +35,6 @@ class Section extends Component {
               <div className="md:w-100 md:px-4 py-4">
                 <ImagePost
                   image={photo.photo}
-                  onOpen={() => this.setState({ photoIndex: i })}
-                  onClose={() => this.setState({ photoIndex: -1 })}
-                  modalIsOpen={photoIndex === i}
                 />
               </div>
             ))}
