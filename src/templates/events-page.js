@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Section from "../components/Section";
 
-export const EventsPageTemplate = ({ title, description }) => {
+export const EventsPageTemplate = ({ title, description, events }) => {
   return (
     <section
       className="pt-8 text-white h-full min-h-screen"
@@ -12,6 +12,7 @@ export const EventsPageTemplate = ({ title, description }) => {
         <Section
           title={title}
           description={description}
+          events={events}
           titleClassName="text-white block text-center text-4xl font-semibold self-center py-3 w-full"
         />
       </div>
