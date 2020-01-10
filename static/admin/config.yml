@@ -59,10 +59,11 @@ collections:
 
   - name: "events"
     label: "Events"
-    folder: "src/content/events"
+    folder: "src/pages/events"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     create: true
     fields:
-      - {label: "Content Key", name: "contentKey", widget: hidden, default: "events"}
+      - {label: "Template Key", name: "templateKey", widget: hidden, default: "event-detail"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Event Date", name: "date", widget: datetime}
       - {label: "Description", name: "description", widget: "text", required: false}

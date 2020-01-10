@@ -16,7 +16,6 @@ const TemplateWrapper = ({ children, data, location: { pathname } }) => {
       if (sectionPosts || title === "Contact" || title === "Events") return title;
     })
     .filter(title => title);
-  console.log('sections', sections, edges);
   return (
     <div className="bg-black-true h-full">
       <link

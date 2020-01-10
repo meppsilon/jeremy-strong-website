@@ -27,7 +27,6 @@ EventsPageTemplate.propTypes = {
 
 const EventsPage = ({ data }) => {
   const { eventsPage, events } = data;
-  console.log('data', data);
 
   return (
     <EventsPageTemplate
@@ -56,7 +55,7 @@ export const eventsPageQuery = graphql`
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: {
         frontmatter: {
-          contentKey: { eq: "events" }
+          templateKey: { eq: "event-detail" }
         }
       }
     ) {
