@@ -32,6 +32,5 @@ export const eventDetailQuery = graphql`
         description
       }
     }
-    allImages
   }
 `;

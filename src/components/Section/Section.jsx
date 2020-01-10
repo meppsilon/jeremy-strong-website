@@ -30,19 +30,19 @@ class Section extends Component {
       return events.edges.map(({ node: { frontmatter: event, fields: { slug } } }) => (
         <div className="w-full my-6">
           <Link to={slug}><h2 className="text-center my-6 text-white hover:text-grey">{event.title}</h2></Link>
-          <div className="md:flex md:flex-wrap md:-mx-4">
-            {event.photos.slice(0, 6).map((photo, i) => (
+          <div className="md:flex md:flex-wrap md:-mx-4 md:justify-center">
+            {event.photos.map((photo, i) => (
               <div className="md:w-100 md:px-4 py-4">
                 <ImagePost
                   image={photo.photo}
                 />
               </div>
             ))}
-            {event.photos.length > 6 && (
+            {/* {event.photos.length > 6 && (
               <Link to={slug} className="w-full flex items-center justify-center py-6">
                 See more {event.title}
               </Link>
-            )}
+            )} */}
           </div>
         </div>
       ));
