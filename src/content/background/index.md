@@ -1,16 +1,16 @@
 ---
 contentKey: background-content
-media: /img/good-morning-cover.png
-link: 'https://youtu.be/2uXm4GF2EMU'
-title: Good Morning
-buttonText: Listen Now
+media: /img/img_0101.jpg
+link: 'https://youtu.be/nuzDvoztmhU'
+title: Go Head
+buttonText: Watch Now
 musicLinks:
-  - link: 'https://open.spotify.com/album/7CEc67tbky79i0KyM8KmwW'
-    type: spotify
   - link: >-
-      https://music.apple.com/us/album/good-morning-single/1487396272?app=music&ign-mpt=uo%3D4
+      https://open.spotify.com/album/1GjYUNQE4o2UDTUKdJFQwr?si=tIipz6l2S4qqKY7oocBGdQ
+    type: spotify
+  - link: ''
     type: apple
-  - link: 'https://youtu.be/2uXm4GF2EMU'
+  - link: 'https://youtu.be/nuzDvoztmhU'
     type: youtube
 ---
 
